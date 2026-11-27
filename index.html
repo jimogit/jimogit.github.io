@@ -5,7 +5,7 @@
 <script>(function(d){d.className+=' js';try{var t=localStorage.getItem('jma-theme');if(t==='light'||t==='dark')d.setAttribute('data-theme',t)}catch(e){}})(document.documentElement)</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Choisir, tester et spécialiser une IA pour les paramédicaux – Jean-Marc Aoun</title>
-<meta name="description" content="Étude de cas : près de 970 réponses évaluées pour choisir l'IA d'un SaaS de santé destiné aux paramédicaux, avec une relecture experte en aveugle. Par Jean-Marc Aoun, chef de projet / product manager Health Tech chez Alphanumerix.">
+<meta name="description" content="Un agent IA qui accompagnera les paramédicaux pendant leurs bilans : deux modèles européens comparés, près de 970 réponses notées, 127 relues par un expert métier. Par Jean-Marc Aoun, chef de projet et product manager Health Tech chez Alphanumerix.">
 <meta name="author" content="Jean-Marc Aoun">
 <link rel="canonical" href="https://jimogit.github.io/">
 <meta name="color-scheme" content="dark light">
@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Jean-Marc Aoun">
 <meta property="og:url" content="https://jimogit.github.io/">
 <meta property="og:title" content="Choisir, tester et spécialiser une IA pour les paramédicaux – Jean-Marc Aoun">
-<meta property="og:description" content="Deux modèles européens à poids ouverts, 80 situations de bilan, près de 970 réponses évaluées, 127 relues en aveugle : un projet d'IA en santé mené de bout en bout.">
+<meta property="og:description" content="Un agent IA nourri par les données du bilan paramédical. Deux modèles européens comparés, près de 970 réponses notées, 127 relues une à une par un enseignant APA.">
 <meta property="og:image" content="https://jimogit.github.io/og-sante.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -109,6 +109,7 @@ body{margin:0;background:var(--fond);color:var(--texte);font-family:var(--corps)
 .s-main{display:block;outline:none}
 .js .s-panneau{display:none}
 .js .s-panneau.est-actif{display:block}
+.js .s-onglet.est-actif{display:flex}
 
 /* ---------- Accueil ---------- */
 .s-accueil{position:relative;overflow:hidden}
@@ -118,13 +119,13 @@ body{margin:0;background:var(--fond);color:var(--texte);font-family:var(--corps)
 .s-ciel::after{opacity:.4;background-image:radial-gradient(circle,#ffffff 0 1px,transparent 1.6px),radial-gradient(circle,var(--bleu) 0 1.3px,transparent 2px),radial-gradient(circle,var(--orange) 0 1.2px,transparent 1.8px);background-size:173px 131px,257px 199px,389px 311px;background-position:23px 41px,97px 13px,211px 157px;animation:s-scintille 7s ease-in-out infinite}
 @keyframes s-scintille{50%{opacity:.15}}
 .s-accueil-in{position:relative;max-width:1440px;margin:0 auto;padding:28px 20px 36px}
-.s-intro{display:flex;flex-direction:column;gap:16px}
-.s-surtitre{font-size:12.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--bleu)}
-.s-h1{font-family:var(--titres);font-weight:500;font-size:clamp(30px,3vw,42px);line-height:1.08;letter-spacing:-.02em}
-.s-message{font-size:18px;line-height:1.5;color:var(--doux)}
-.s-role{font-size:15.5px;line-height:1.5}
-.s-tags{margin-top:6px!important;padding:0;list-style:none;display:flex;flex-wrap:wrap;gap:8px;font-size:13.5px;color:var(--doux)}
-.s-tags li{font-style:normal!important;padding:4px 11px;border:1px solid var(--filet);border-radius:14px;background:var(--surf)}
+.s-intro{display:flex;flex-direction:column;gap:14px}
+.s-h1{font-family:var(--titres);font-weight:500;font-size:clamp(28px,2.6vw,38px);line-height:1.08;letter-spacing:-.02em}
+.s-message{font-size:17px;line-height:1.5;color:var(--doux)}
+.s-moi{display:flex;gap:14px;align-items:flex-start;margin-top:2px;padding:12px 14px;border:1px solid var(--filet);border-radius:14px;background:var(--surf);font-size:14.5px;line-height:1.45}
+.s-moi .pf-mono{margin-top:2px}
+.s-tags{margin-top:2px!important;padding:0;list-style:none;display:flex;flex-wrap:wrap;gap:6px;font-size:13px;color:var(--doux)}
+.s-tags li{font-style:normal!important;padding:3px 10px;border:1px solid var(--filet);border-radius:14px;background:var(--surf)}
 .s-tags .s-tag-avenir{border-style:dashed;border-color:var(--contour);background:none}
 .s-tags .s-tag-sep{border:0;background:none;padding:4px 2px 4px 6px}
 
@@ -152,23 +153,25 @@ body{margin:0;background:var(--fond);color:var(--texte);font-family:var(--corps)
 .s-nombre{display:block;font:500 31px/1 var(--titres);color:var(--texte)}
 .s-nombre small{font:400 14px/1 var(--corps);color:var(--doux)}
 .s-nombre.s-orange{color:var(--orange)}
+.s-nombre.s-bleu{color:var(--bleu)}
 .s-legende{display:block;margin-top:5px;font-size:13.5px;line-height:1.3;color:var(--doux)}
 .s-note{padding-top:10px;border-top:1px solid var(--filet);font-size:12.5px;line-height:1.35;color:var(--doux)}
-.s-etapes{margin-top:24px;display:grid;grid-template-columns:repeat(3,104px);justify-content:center;gap:12px 16px}
-.s-hex{position:relative;width:104px;height:116px;padding:0;border:0;background:none;color:var(--texte);font:inherit;cursor:pointer;transition:transform .18s ease}
-.s-hex svg{position:absolute;inset:0;width:104px;height:116px}
-.s-hex polygon{fill:var(--surf);stroke:var(--contour);stroke-width:1.5;transition:stroke .18s ease}
-.s-hex:hover{transform:scale(1.06)}
-.s-hex:hover polygon,.s-hex:focus-visible polygon{stroke:var(--bleu);stroke-width:2}
-#pf-sante .s-hex:focus-visible{outline:none}
-.s-hex-avenir polygon{fill:var(--fond);stroke-dasharray:5 5}
-.s-hex-c{position:relative;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px}
-.s-hex-c svg{position:static;width:18px;height:18px;fill:none;stroke:var(--bleu);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
-.s-hex-avenir .s-hex-c svg{stroke:var(--doux)}
-.s-hex-n{font:500 24px/1.1 var(--titres)}
-.s-hex-n.s-petit{font-size:20px;line-height:1.25}
-.s-hex-n.s-avenir-t{font:italic 400 13px/1.3 var(--corps);color:var(--doux)}
-.s-hex-v{font-size:11.5px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--doux)}
+.s-sources-t{margin:26px 0 10px!important;text-align:center;font-size:11.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--doux)}
+.s-sources{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,104px);justify-content:center;gap:10px 8px}
+.s-hex{position:relative;width:104px;height:116px}
+.s-hex-fond{position:absolute;inset:0;width:100%;height:100%}
+.s-hex-fond polygon{fill:var(--surf);stroke:var(--contour);stroke-width:1.5}
+.s-hex-c{position:relative;height:100%;padding:0 12px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;text-align:center}
+.s-hex-c svg{width:20px;height:20px;fill:none;stroke:var(--bleu);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.s-hex-l{font-size:12.5px;font-weight:600;line-height:1.2}
+.s-hex-sortie .s-hex-fond polygon{fill:#0f1a2e;stroke:var(--bleu)}
+.s-hex-p{font-size:11px;line-height:1.2;color:var(--bleu)}
+.s-sorties{margin-top:10px}
+.s-fil-sortie{stroke-dasharray:2 9}
+.s-grain-sortie{stroke:var(--bleu)}
+.s-lien{fill:none;stroke:var(--bleu);stroke-width:1.5;stroke-dasharray:3 4}
+.s-gain{font-size:14.5px;line-height:1.45;color:var(--doux)}
+.s-gain strong{color:var(--orange);font-weight:600}
 .s-pause{display:flex;align-items:center;gap:8px;margin:20px auto 0;min-height:44px;padding:0 14px;border:1px solid var(--contour);border-radius:22px;background:var(--fond);color:var(--doux);font:400 13.5px/1 var(--corps);cursor:pointer}
 .s-pause:hover{color:var(--texte);border-color:var(--texte)}
 .s-pause svg{width:14px;height:14px;fill:currentColor}
@@ -270,13 +273,7 @@ body{margin:0;background:var(--fond);color:var(--texte);font-family:var(--corps)
 .s-moins{color:var(--orange);font-weight:600}
 .s-sous{font-size:13.5px;line-height:1.4;color:var(--doux);margin-top:10px!important}
 /* Chaînes d'étapes (banc, parcours, suite) */
-.s-chaine{list-style:none;padding:0;display:grid;grid-template-columns:minmax(0,1fr);gap:22px}
-.s-chaine>li{position:relative;padding:12px 14px;background:var(--surf);border:1px solid var(--filet);border-radius:12px}
-.s-chaine>li+li::before{content:"";position:absolute;left:50%;top:-17px;width:9px;height:9px;margin-left:-5px;border-right:1.5px solid var(--contour);border-bottom:1.5px solid var(--contour);transform:rotate(45deg)}
-.s-chaine b{display:block;font:500 15.5px/1.25 var(--titres);color:var(--texte)}
-.s-chaine span{display:block;margin-top:3px;font-size:13.5px;line-height:1.35;color:var(--doux)}
-.s-chaine .s-cle{border-color:var(--bleu)}
-.s-journal{margin-top:14px!important;padding:10px 14px;border:1px dashed var(--contour);border-radius:12px;font-size:13.5px;color:var(--doux)}
+.s-journal{margin-top:-6px!important;padding:10px 14px;border:1px dashed var(--contour);border-radius:12px;font-size:13.5px;color:var(--doux)}
 .s-journal b{color:var(--texte);font-weight:600}
 /* Barres du kappa */
 .s-barres{list-style:none;padding:0;display:grid;grid-template-columns:auto minmax(80px,1fr) 38px;align-items:center;gap:9px 10px;font-size:14px}
@@ -294,6 +291,40 @@ body{margin:0;background:var(--fond);color:var(--texte);font-family:var(--corps)
 .s-suite-num>li{counter-increment:etape}
 .s-suite-num>li b::before{content:counter(etape) " · ";color:var(--bleu)}
 .s-credit{font-size:13px;color:var(--doux)}
+.s-intro-onglet{font:500 clamp(17px,1.45vw,20px)/1.4 var(--titres);color:var(--texte);max-width:980px}
+.s-table.s-grand{font-size:15.5px}
+.s-table.s-grand th,.s-table.s-grand td{padding:7px 12px}
+.s-table.s-grand thead th{font-size:14px}
+.s-reeval .s-table.s-grand th,.s-reeval .s-table.s-grand td{padding:5px 12px}
+.s-legende-tableau{margin-top:10px!important;font-size:14.5px;line-height:1.45;color:var(--doux)}
+.s-trio,.s-duo,.s-quatre{display:grid;grid-template-columns:minmax(0,1fr);gap:18px 32px}
+.s-bloc.s-plein{grid-column:1/-1}
+.s-cartes{list-style:none;padding:0;display:grid;grid-template-columns:minmax(0,1fr);gap:14px}
+.s-cartes>li{padding:16px 18px;background:var(--surf);border:1px solid var(--filet);border-radius:14px}
+.s-cartes>li.s-cle{border-color:var(--bleu)}
+.s-gros{display:block;margin-bottom:8px;font:500 24px/1.1 var(--titres);color:var(--texte)}
+.s-cartes b{display:block;margin-bottom:8px;font:500 18px/1.25 var(--titres);color:var(--texte)}
+.s-cartes p{font-size:14.5px;line-height:1.45;color:var(--doux)}
+.s-parcours{list-style:none;padding:0;display:grid;grid-template-columns:minmax(0,1fr);gap:14px}
+.s-parcours>li{position:relative;padding:14px 16px;background:var(--surf);border:1px solid var(--filet);border-radius:14px}
+.s-parcours>li.s-cle{border-color:var(--bleu)}
+.s-parcours b{display:block;margin:8px 0 6px;font:500 17px/1.25 var(--titres);color:var(--texte)}
+.s-parcours p{font-size:14.5px;line-height:1.45;color:var(--doux)}
+.s-parcours .s-etiquettes{margin-top:0!important}
+.s-num{display:flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:50%;border:1.5px solid var(--bleu);font:500 15px/1 var(--titres);color:var(--bleu)}
+.s-parcours>li.s-cle .s-num{background:var(--bleu);color:var(--fond)}
+.s-montre .s-fort{color:var(--bleu);font-weight:600}
+.s-alerte{margin-top:12px!important;font-size:15px;color:var(--texte)}
+.s-alerte strong{color:var(--orange);font-weight:600}
+.s-carte-t{margin-bottom:8px!important;font-size:14.5px}
+.s-table.s-mini{font-size:15px}
+.s-table.s-mini td{font:500 26px/1 var(--titres);text-align:center;vertical-align:middle}
+.s-table.s-mini thead th{text-align:center}
+.s-table.s-mini td.s-moins{color:var(--orange)}
+.s-table.s-mini tbody th small{font-size:12.5px}
+
+.s-carte figcaption{margin-bottom:12px;font-size:14.5px;line-height:1.4;color:var(--doux)}
+.s-carte figcaption strong{display:block;color:var(--texte);font-weight:600}
 
 /* ---------- Ordinateur : un écran par vue ---------- */
 @media (min-width:1180px){
@@ -305,19 +336,24 @@ body{margin:0;background:var(--fond);color:var(--texte);font-family:var(--corps)
   .s-chiffres{position:absolute;left:200px;top:182px;width:300px;margin:0}
   .s-chiffres .s-nombre{font-size:32px}
   .s-legende{font-size:13px}
-  .s-etapes{display:block;margin:0}
-  .s-hex{position:absolute;left:var(--x);top:var(--y)}
+  .s-sources-t{display:none}
+  .s-sources,.s-sorties{display:block;margin:0}
+  .s-hex{position:absolute;left:var(--x);top:var(--y);width:112px;height:124px}
   .s-pause{position:absolute;right:0;bottom:0;margin:0}
-  .s-onglet{min-height:var(--haut);padding:22px 48px 20px}
-  .s-corps{flex:1;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px;align-items:start}
+  .s-onglet{min-height:var(--haut);padding:18px 48px 14px;gap:18px}
+  .s-corps{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px;align-items:start}
   .s-blocs.s-deux{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .s-corps.s-large-droite{grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr)}
-  .s-corps.s-trois{grid-template-columns:repeat(3,minmax(0,1fr));gap:28px}
-  .s-chaine.s-ligne{grid-template-columns:repeat(5,minmax(0,1fr));gap:26px}
-  .s-chaine.s-ligne>li+li::before{left:-18px;top:50%;margin:-5px 0 0;transform:rotate(-45deg)}
-  .s-chaine.s-grille{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
-  .s-chaine.s-grille>li::before{display:none}
-  .s-visuel-paire{display:grid;grid-template-columns:minmax(0,1fr) 200px;gap:16px}
+          .s-visuel-paire{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:16px}
+  .s-corps.s-valid{grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr)}
+  .s-trio{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .s-duo{grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 48px}
+  .s-quatre{grid-template-columns:repeat(4,minmax(0,1fr));gap:18px 28px}
+  .s-cartes{grid-template-columns:repeat(5,minmax(0,1fr))}
+  .s-cartes.s-suite-num{grid-template-columns:repeat(5,minmax(0,1fr));gap:18px}
+  .s-parcours{grid-template-columns:1.7fr 1fr 1fr 1fr;gap:28px}
+  .s-parcours>li+li::before{content:"";position:absolute;left:-21px;top:30px;width:9px;height:9px;border-right:1.5px solid var(--contour);border-bottom:1.5px solid var(--contour);transform:rotate(-45deg)}
+  .s-corps.s-reeval{grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:36px}
+  #s-suite{gap:30px}
 }
 @media (max-width:1179px){
   .s-onglets{padding:0 8px}
@@ -325,9 +361,6 @@ body{margin:0;background:var(--fond);color:var(--texte);font-family:var(--corps)
   .s-onglet .s-corps{gap:24px}
   .s-barres{font-size:13.5px}
   .s-visuel-paire{display:flex;flex-direction:column;gap:16px}
-}
-@media (max-width:379px){
-  .s-etapes{grid-template-columns:repeat(2,104px)}
 }
 @media (prefers-reduced-motion:reduce){
   #pf-sante *,#pf-sante *::before,#pf-sante *::after{animation:none!important;transition:none!important}
@@ -357,9 +390,9 @@ body{margin:0;background:var(--fond);color:var(--texte);font-family:var(--corps)
     <div class="s-onglets" role="tablist" aria-label="Projet IA en santé">
       <button class="s-onglet-btn" type="button" role="tab" id="s-t-accueil" aria-controls="s-accueil" aria-selected="true">Accueil</button>
       <button class="s-onglet-btn" type="button" role="tab" id="s-t-modele" aria-controls="s-modele" aria-selected="false" tabindex="-1">Choisir le modèle</button>
-      <button class="s-onglet-btn" type="button" role="tab" id="s-t-banc-essai" aria-controls="s-banc-essai" aria-selected="false" tabindex="-1">Le banc d'essai</button>
+      <button class="s-onglet-btn" type="button" role="tab" id="s-t-evaluation" aria-controls="s-evaluation" aria-selected="false" tabindex="-1">L'évaluation</button>
       <button class="s-onglet-btn" type="button" role="tab" id="s-t-validation" aria-controls="s-validation" aria-selected="false" tabindex="-1">La validation experte</button>
-      <button class="s-onglet-btn" type="button" role="tab" id="s-t-progression" aria-controls="s-progression" aria-selected="false" tabindex="-1">La progression</button>
+      <button class="s-onglet-btn" type="button" role="tab" id="s-t-reevaluation" aria-controls="s-reevaluation" aria-selected="false" tabindex="-1">La réévaluation</button>
       <button class="s-onglet-btn" type="button" role="tab" id="s-t-garde-fous" aria-controls="s-garde-fous" aria-selected="false" tabindex="-1">Garde-fous et conformité</button>
       <button class="s-onglet-btn" type="button" role="tab" id="s-t-suite" aria-controls="s-suite" aria-selected="false" tabindex="-1">La suite <span class="s-avenir">à venir</span></button>
     </div>
@@ -372,10 +405,9 @@ body{margin:0;background:var(--fond);color:var(--texte);font-family:var(--corps)
   <div class="s-ciel" aria-hidden="true"></div>
   <div class="s-accueil-in">
     <div class="s-intro">
-      <p class="s-surtitre">Pas un prompt : un banc d'essai</p>
       <h1 class="s-h1" id="s-titre">Choisir, tester et spécialiser une IA pour les paramédicaux</h1>
-      <p class="s-message">Une IA choisie après près de 970 essais, bientôt spécialisée dans le paramédical, pour épauler les professionnels pendant leurs bilans. Elle propose, ils valident.</p>
-      <p class="s-role">Chef de projet / product manager Health Tech · Alphanumerix<br><a href="https://www.linkedin.com/in/jean-marc-aoun-product-manager" target="_blank" rel="noopener">Me contacter sur LinkedIn<span class="pf-sr"> (nouvel onglet)</span></a></p>
+      <p class="s-message">Un agent IA qui accompagnera l'enseignant APA, puis les autres paramédicaux, pendant leurs bilans. À partir des données recueillies, il proposera une programmation et une orientation adaptées à la personne. Il propose, le professionnel valide.</p>
+      <p class="s-gain"><strong>Gain de temps estimé</strong> : 5 à 10 minutes sur un bilan de 45 à 60 minutes, pour une proposition plus complète que ce qu'un professionnel peut rédiger seul dans ce temps.</p>
       <ul class="s-tags" aria-label="Méthode">
         <li lang="en">eval-driven development</li>
         <li lang="en">grounding</li>
@@ -387,6 +419,10 @@ body{margin:0;background:var(--fond);color:var(--texte);font-family:var(--corps)
         <li class="s-tag-avenir">RAG</li>
         <li class="s-tag-avenir" lang="en">fine-tuning</li>
       </ul>
+      <div class="s-moi">
+        <span class="pf-mono" aria-hidden="true">JMA</span>
+        <p>Je suis Jean-Marc Aoun, chef de projet et product manager Health Tech chez Alphanumerix, une entreprise spécialisée en cybersécurité, en intelligence artificielle et en gestion d'infrastructure.<br><a href="https://www.linkedin.com/in/jean-marc-aoun-product-manager" target="_blank" rel="noopener">Me contacter sur LinkedIn<span class="pf-sr"> (nouvel onglet)</span></a></p>
+      </div>
     </div>
 
     <div class="s-scene-wrap">
@@ -400,13 +436,15 @@ body{margin:0;background:var(--fond);color:var(--texte);font-family:var(--corps)
           <path class="s-fil" d="M60 262Q210 -20 350 30"/>
           <path class="s-fil" d="M140 432Q266 -30 350 30"/>
           <path class="s-fil" d="M560 92Q448 6 350 30"/>
-          <path class="s-fil" d="M640 262Q490 -20 350 30"/>
-          <path class="s-fil-avenir" d="M560 432Q434 -30 350 30"/>
+          <path class="s-fil s-fil-sortie" d="M350 30Q490 -20 640 262"/>
+          <path class="s-fil s-fil-sortie" d="M350 30Q434 -30 560 432"/>
+          <path class="s-lien" d="M622 322L580 372"/>
           <path class="s-grain" style="--rang:0" pathLength="100" d="M140 92Q252 6 350 30"/>
           <path class="s-grain" style="--rang:1" pathLength="100" d="M60 262Q210 -20 350 30"/>
           <path class="s-grain" style="--rang:2" pathLength="100" d="M140 432Q266 -30 350 30"/>
           <path class="s-grain" style="--rang:3" pathLength="100" d="M560 92Q448 6 350 30"/>
-          <path class="s-grain" style="--rang:4" pathLength="100" d="M640 262Q490 -20 350 30"/>
+          <path class="s-grain s-grain-sortie" style="--rang:1" pathLength="100" d="M350 30Q490 -20 640 262"/>
+          <path class="s-grain s-grain-sortie" style="--rang:3" pathLength="100" d="M350 30Q434 -30 560 432"/>
         </svg>
 
         <svg class="s-robot" viewBox="0 -4 240 242" aria-hidden="true" focusable="false">
@@ -463,46 +501,50 @@ body{margin:0;background:var(--fond);color:var(--texte);font-family:var(--corps)
         </svg>
 
         <svg class="s-eclats" viewBox="0 0 700 530" aria-hidden="true" focusable="false">
-          <circle class="s-eclat" style="--rang:0" cx="350" cy="30" r="6"/><circle class="s-eclat" style="--rang:1" cx="350" cy="30" r="6"/><circle class="s-eclat" style="--rang:2" cx="350" cy="30" r="6"/><circle class="s-eclat" style="--rang:3" cx="350" cy="30" r="6"/><circle class="s-eclat" style="--rang:4" cx="350" cy="30" r="6"/>
+          <circle class="s-eclat" style="--rang:0" cx="350" cy="30" r="6"/><circle class="s-eclat" style="--rang:1" cx="350" cy="30" r="6"/><circle class="s-eclat" style="--rang:2" cx="350" cy="30" r="6"/><circle class="s-eclat" style="--rang:3" cx="350" cy="30" r="6"/>
         </svg>
 
         <section class="s-chiffres" aria-labelledby="s-chiffres-t">
-          <h2 id="s-chiffres-t">Le banc en chiffres</h2>
+          <h2 id="s-chiffres-t">Le projet en chiffres</h2>
           <ul>
-            <li><span class="s-nombre"><small>près de </small>970</span><span class="s-legende">réponses évaluées</span></li>
-            <li><span class="s-nombre">2</span><span class="s-legende">modèles européens à poids ouverts</span></li>
-            <li><span class="s-nombre">127</span><span class="s-legende">réponses relues en aveugle</span></li>
-            <li><span class="s-nombre s-orange">÷ 6<span aria-hidden="true">*</span></span><span class="s-legende">alertes d'erreur grave de Mistral, avec le seul prompt</span></li>
+            <li><span class="s-nombre">2</span><span class="s-legende">modèles d'IA européens comparés</span></li>
+            <li><span class="s-nombre"><small>près de </small>970</span><span class="s-legende">réponses de l'IA notées</span></li>
+            <li><span class="s-nombre">127</span><span class="s-legende">réponses de l'IA relues une à une par moi, en tant qu'enseignant APA</span></li>
+            <li><span class="s-nombre s-bleu">÷ 6</span><span class="s-legende">alertes d'erreur grave de Mistral, après la réécriture de sa consigne</span></li>
           </ul>
-          <p class="s-note"><span aria-hidden="true">* </span>Mesuré par les contrôles automatiques. Limites dans <a href="#sante/progression">La progression</a>.</p>
+          <p class="s-note">Ce dernier chiffre vient de contrôles automatiques. L'onglet <a href="#sante/reevaluation">La réévaluation</a> en explique les limites.</p>
         </section>
 
-        <nav class="s-etapes" aria-label="Les six étapes de la méthode">
-          <button class="s-hex" type="button" data-onglet="modele" style="--x:88px;--y:34px">
-            <svg viewBox="0 0 104 116" aria-hidden="true" focusable="false"><polygon points="52,1 103,29.5 103,86.5 52,115 1,86.5 1,29.5"/></svg>
-            <span class="s-hex-c"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 3v18M5 7h14M5 7l-3 7a3 3 0 0 0 6 0zM19 7l-3 7a3 3 0 0 0 6 0z"/></svg><span class="s-hex-n">2</span> <span class="s-hex-v">Choisir</span><span class="pf-sr"> : ouvrir l’onglet Choisir le modèle</span></span>
-          </button>
-          <button class="s-hex" type="button" data-onglet="banc-essai" style="--x:8px;--y:204px">
-            <svg viewBox="0 0 104 116" aria-hidden="true" focusable="false"><polygon points="52,1 103,29.5 103,86.5 52,115 1,86.5 1,29.5"/></svg>
-            <span class="s-hex-c"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M10 6h10M10 12h10M10 18h10M4 6l1.2 1.2L7.5 5M4 12l1.2 1.2L7.5 11M4 18l1.2 1.2L7.5 17"/></svg><span class="s-hex-n">80</span> <span class="s-hex-v">Tester</span><span class="pf-sr"> : ouvrir l’onglet Le banc d’essai</span></span>
-          </button>
-          <button class="s-hex" type="button" data-onglet="validation" style="--x:88px;--y:374px">
-            <svg viewBox="0 0 104 116" aria-hidden="true" focusable="false"><polygon points="52,1 103,29.5 103,86.5 52,115 1,86.5 1,29.5"/></svg>
-            <span class="s-hex-c"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12zM12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg><span class="s-hex-n">127</span> <span class="s-hex-v">Relire</span><span class="pf-sr"> : ouvrir l’onglet La validation experte</span></span>
-          </button>
-          <button class="s-hex" type="button" data-onglet="progression" style="--x:508px;--y:34px">
-            <svg viewBox="0 0 104 116" aria-hidden="true" focusable="false"><polygon points="52,1 103,29.5 103,86.5 52,115 1,86.5 1,29.5"/></svg>
-            <span class="s-hex-c"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M2 12h4l2.5-7 4.5 14 2.5-7H22"/></svg><span class="s-hex-n">÷ 6</span> <span class="s-hex-v">Mesurer</span><span class="pf-sr"> : ouvrir l’onglet La progression</span></span>
-          </button>
-          <button class="s-hex" type="button" data-onglet="garde-fous" style="--x:588px;--y:204px">
-            <svg viewBox="0 0 104 116" aria-hidden="true" focusable="false"><polygon points="52,1 103,29.5 103,86.5 52,115 1,86.5 1,29.5"/></svg>
-            <span class="s-hex-c"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6zM9 12l2 2 4-4"/></svg><span class="s-hex-n s-petit">SaMD</span> <span class="s-hex-v">Protéger</span><span class="pf-sr"> : ouvrir l’onglet Garde-fous et conformité</span></span>
-          </button>
-          <button class="s-hex s-hex-avenir" type="button" data-onglet="suite" style="--x:508px;--y:374px">
-            <svg viewBox="0 0 104 116" aria-hidden="true" focusable="false"><polygon points="52,1 103,29.5 103,86.5 52,115 1,86.5 1,29.5"/></svg>
-            <span class="s-hex-c"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2zM4 21V5M8 7h7"/></svg><span class="s-hex-n s-avenir-t">à venir</span> <span class="s-hex-v">Spécialiser</span><span class="pf-sr"> : ouvrir l’onglet La suite</span></span>
-          </button>
-        </nav>
+        <p class="s-sources-t" aria-hidden="true">Ce que reçoit l'agent IA</p>
+        <ul class="s-sources" aria-label="Ce que reçoit l'agent IA pendant le bilan">
+          <li class="s-hex" style="--x:84px;--y:30px">
+            <svg class="s-hex-fond" viewBox="0 0 112 124" aria-hidden="true" focusable="false"><polygon points="56,1 111,31.5 111,92.5 56,123 1,92.5 1,31.5"/></svg>
+            <span class="s-hex-c"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 5h14a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-7l-4 3v-3H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2z"/></svg><span class="s-hex-l">Contexte et histoire</span></span>
+          </li>
+          <li class="s-hex" style="--x:4px;--y:200px">
+            <svg class="s-hex-fond" viewBox="0 0 112 124" aria-hidden="true" focusable="false"><polygon points="56,1 111,31.5 111,92.5 56,123 1,92.5 1,31.5"/></svg>
+            <span class="s-hex-c"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M10 6h10M10 12h10M10 18h10M4 6l1.2 1.2L7.5 5M4 12l1.2 1.2L7.5 11M4 18l1.2 1.2L7.5 17"/></svg><span class="s-hex-l">Questionnaires</span></span>
+          </li>
+          <li class="s-hex" style="--x:84px;--y:370px">
+            <svg class="s-hex-fond" viewBox="0 0 112 124" aria-hidden="true" focusable="false"><polygon points="56,1 111,31.5 111,92.5 56,123 1,92.5 1,31.5"/></svg>
+            <span class="s-hex-c"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M2 12h4l2.5-7 4.5 14 2.5-7H22"/></svg><span class="s-hex-l">Condition physique</span></span>
+          </li>
+          <li class="s-hex" style="--x:504px;--y:30px">
+            <svg class="s-hex-fond" viewBox="0 0 112 124" aria-hidden="true" focusable="false"><polygon points="56,1 111,31.5 111,92.5 56,123 1,92.5 1,31.5"/></svg>
+            <span class="s-hex-c"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7 3h7l4 4v12a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2zM14 3v4h4M9 13h6M9 17h6"/></svg><span class="s-hex-l">Examens et bilans</span></span>
+          </li>
+        </ul>
+        <p class="s-sources-t" aria-hidden="true">Ce qu'il propose</p>
+        <ul class="s-sources s-sorties" aria-label="Ce que propose l'agent IA, deux propositions liées entre elles">
+          <li class="s-hex s-hex-sortie" style="--x:584px;--y:200px">
+            <svg class="s-hex-fond" viewBox="0 0 112 124" aria-hidden="true" focusable="false"><polygon points="56,1 111,31.5 111,92.5 56,123 1,92.5 1,31.5"/></svg>
+            <span class="s-hex-c"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 5h12a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2zM4 10h16M8 3v4M16 3v4"/></svg><span class="s-hex-l">Programmation</span><span class="s-hex-p">proposée par l’agent</span></span>
+          </li>
+          <li class="s-hex s-hex-sortie" style="--x:504px;--y:370px">
+            <svg class="s-hex-fond" viewBox="0 0 112 124" aria-hidden="true" focusable="false"><polygon points="56,1 111,31.5 111,92.5 56,123 1,92.5 1,31.5"/></svg>
+            <span class="s-hex-c"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 21s-6.5-5.4-6.5-10.3a6.5 6.5 0 0 1 13 0C18.5 15.6 12 21 12 21zM12 13a2.4 2.4 0 1 0 0-4.8 2.4 2.4 0 0 0 0 4.8z"/></svg><span class="s-hex-l">Orientation</span><span class="s-hex-p">proposée par l’agent</span></span>
+          </li>
+        </ul>
 
         <button class="s-pause" type="button" aria-label="Mettre l'animation en pause"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path class="s-en-cours" d="M6 5h4v14H6zM14 5h4v14h-4z"/><path class="s-lecture" d="M7 4l13 8-13 8z"/></svg><span class="s-en-cours">Pause</span><span class="s-lecture">Lecture</span></button>
       </div>
@@ -513,98 +555,94 @@ body{margin:0;background:var(--fond);color:var(--texte);font-family:var(--corps)
 <!-- ===================== 1. Choisir le modèle ===================== -->
 <section class="s-panneau s-onglet" id="s-modele" role="tabpanel" aria-labelledby="s-t-modele" tabindex="0">
   <div class="s-tete"><h2>Choisir le modèle</h2><p class="s-4d"><a href="https://www.anthropic.com/ai-fluency/overview" target="_blank" rel="noopener">AI Fluency<span class="pf-sr"> (nouvel onglet)</span></a> · <span lang="en">Delegation</span></p></div>
-  <p class="s-chapeau">Un assistant conçu pour épauler les paramédicaux pendant leurs bilans, avec la science à portée de main. Son IA n'a pas été prise au hasard : deux modèles ont été mis en concurrence sur 80 situations de bilan, près de 970 réponses évaluées, et le meilleur sera spécialisé dans le métier, comme d'autres IA le sont en radiologie ou en traduction. Il propose, le professionnel valide.</p>
-  <div class="s-corps s-large-droite">
-    <div class="s-blocs">
-      <div class="s-bloc"><h3>La contrainte</h3><p>Pas de serveur ni de carte graphique à soi. Les modèles sont appelés par API, en inférence managée (<span lang="en">serverless</span> : sans machine à gérer) chez OVHcloud (AI Endpoints), hébergés en Europe.</p></div>
-      <div class="s-bloc"><h3>Les critères</h3><p>Modèle à poids ouverts, pour pouvoir le spécialiser et l'héberger soi-même plus tard ; licence permissive ; éditeur européen ; servi par le même fournisseur, pour une comparaison équitable ; bon niveau en français.</p></div>
-      <div class="s-bloc"><h3>Pourquoi ce choix compte</h3><p><span lang="en">Uneven coverage</span> : le paramédical, et l'APA en particulier, est peu représenté dans les données d'entraînement des modèles. <span lang="en">Working memory</span> : ce que le modèle « voit » à chaque requête, sa fenêtre de contexte. Les fiches y sont placées : 128 000 tokens pour Mistral, 32 000 pour Olala. Au-delà, il faudra le RAG.</p></div>
-    </div>
-    <div class="s-defile" role="region" aria-label="Tableau des deux modèles" tabindex="0">
-      <table class="s-table">
-        <caption>Les deux modèles testés, et pourquoi</caption>
-        <thead><tr><th scope="col"><span class="pf-sr">Critère</span></th><th scope="col">Mistral Small 3.2 (24B Instruct 2506)</th><th scope="col">Olala mini 7A1B</th></tr></thead>
-        <tbody>
-          <tr><th scope="row">Éditeur</th><td>Mistral AI (France)</td><td>OVHcloud (France), publié le 17 novembre 2026</td></tr>
-          <tr><th scope="row">Licence</th><td>Apache 2.0, poids ouverts</td><td>Apache 2.0, poids ouverts</td></tr>
-          <tr><th scope="row">Taille</th><td>24 milliards de paramètres, modèle dense</td><td>environ 7 milliards de paramètres, environ 1 milliard actifs par requête (<span lang="en">Mixture of Experts</span>, architecture hybride Mamba et attention)</td></tr>
-          <tr><th scope="row">Contexte</th><td>128 000 tokens</td><td>32 000 tokens</td></tr>
-          <tr><th scope="row">Pourquoi lui</th><td>la référence de taille intermédiaire, assez grande pour bien raisonner, assez petite pour rester sobre</td><td>le modèle léger et souverain, capable de tourner sans carte graphique</td></tr>
-        </tbody>
-      </table>
-      <p class="s-sous"><span lang="en">Mixture of Experts</span> : à chaque requête, seule une partie du modèle, ses « experts », est mise au travail.</p>
-    </div>
+  <p class="s-intro-onglet">Le duel oppose un modèle de taille intermédiaire et un modèle très léger, tous deux européens, ouverts et servis par la même infrastructure.</p>
+  <div class="s-defile" role="region" aria-label="Tableau des deux modèles" tabindex="0">
+    <table class="s-table s-grand">
+      <caption class="pf-sr">Les deux modèles testés, et pourquoi</caption>
+      <thead><tr><th scope="col"><span class="pf-sr">Critère</span></th><th scope="col">Mistral Small 3.2 (24B Instruct 2506)</th><th scope="col">Olala mini 7A1B</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Éditeur</th><td>Mistral AI (France)</td><td>OVHcloud (France), publié le 17 novembre 2026</td></tr>
+        <tr><th scope="row">Licence</th><td>Apache 2.0, poids ouverts</td><td>Apache 2.0, poids ouverts</td></tr>
+        <tr><th scope="row">Taille</th><td>24 milliards de paramètres</td><td>environ 7 milliards de paramètres (<span lang="en">Mixture of Experts</span>)</td></tr>
+        <tr><th scope="row">Contexte</th><td>128 000 tokens</td><td>32 000 tokens</td></tr>
+        <tr><th scope="row">Pourquoi lui</th><td>la référence de taille intermédiaire : assez grand pour bien raisonner, assez petit pour rester sobre</td><td>le modèle léger et souverain, capable de tourner sans carte graphique</td></tr>
+      </tbody>
+    </table>
   </div>
-  <p class="s-montre"><strong>Ce que ça montre</strong> <span>Le duel oppose un modèle de taille intermédiaire et un modèle très léger, tous deux européens, ouverts et servis par la même infrastructure.</span></p>
+  <div class="s-trio">
+    <div class="s-bloc"><h3>La contrainte</h3><p>Nous n'avons ni serveur ni carte graphique en interne. Les modèles sont donc appelés par API chez OVHcloud, hébergés en Europe.</p></div>
+    <div class="s-bloc"><h3>Les critères</h3><p>Des poids ouverts, pour pouvoir spécialiser le modèle et l'héberger plus tard. Une licence permissive, un éditeur européen, un bon niveau en français.</p></div>
+    <div class="s-bloc"><h3>Pourquoi ce choix compte</h3><p>Le paramédical est peu présent dans les données d'entraînement des modèles (<span lang="en">uneven coverage</span>). Il faut donc un modèle que l'on puisse spécialiser.</p></div>
+  </div>
 </section>
 
-<!-- ===================== 2. Le banc d'essai ===================== -->
-<section class="s-panneau s-onglet" id="s-banc-essai" role="tabpanel" aria-labelledby="s-t-banc-essai" tabindex="0">
-  <div class="s-tete"><h2>Le banc d'essai</h2><p class="s-4d"><a href="https://www.anthropic.com/ai-fluency/overview" target="_blank" rel="noopener">AI Fluency<span class="pf-sr"> (nouvel onglet)</span></a> · <span lang="en">Discernment</span></p></div>
-  <ol class="s-chaine s-ligne" aria-label="Le banc, de la fiche à la note">
-    <li><b>13 fiches</b><span>de recommandations, dont une reprend des repères de la HAS (2018)</span></li>
-    <li><b>80 cas fictifs</b><span>(81 en version 1), sur 6 fonctionnalités</span></li>
-    <li><b>2 modèles × 3 tirages</b><span>même consigne, mêmes fiches, mêmes questions</span></li>
-    <li><b>Grille de 6 critères</b><span>notés 0, 1 ou 2, et un drapeau « erreur grave »</span></li>
-    <li class="s-cle"><b>Près de 970 réponses</b><span>486 en version 1, 480 en version 2</span></li>
+<!-- ===================== 2. L'évaluation ===================== -->
+<section class="s-panneau s-onglet" id="s-evaluation" role="tabpanel" aria-labelledby="s-t-evaluation" tabindex="0">
+  <div class="s-tete"><h2>L'évaluation</h2><p class="s-4d"><a href="https://www.anthropic.com/ai-fluency/overview" target="_blank" rel="noopener">AI Fluency<span class="pf-sr"> (nouvel onglet)</span></a> · <span lang="en">Discernment</span></p></div>
+  <p class="s-intro-onglet">Avant de choisir, nous avons soumis les deux modèles aux mêmes situations de bilan, puis noté chacune de leurs réponses.</p>
+  <ol class="s-cartes" aria-label="Les étapes de l'évaluation">
+    <li><span class="s-gros">13 fiches</span><p>Nous avons rédigé 13 fiches de recommandations, fondées sur des données scientifiques validées et couvrant plusieurs pathologies. Les modèles s'en servent pour répondre.</p></li>
+    <li><span class="s-gros">80 cas fictifs</span><p>Ce sont des situations de bilan inventées : vérifier un seuil avant la séance, repérer un signe d'alerte, rédiger un texte pour le patient, ébaucher un programme.</p></li>
+    <li><span class="s-gros">3 fois</span><p>Nous avons posé trois fois la même question à chaque modèle, pour vérifier que ses réponses restent stables.</p></li>
+    <li><span class="s-gros">6 critères</span><p>Chaque réponse est notée sur six critères, dont l'appui sur les fiches (<span lang="en">grounding</span>) et l'absence de chiffre inventé. Une réponse dangereuse est signalée comme erreur grave.</p></li>
+    <li class="s-cle"><span class="s-gros">Près de 970</span><p>réponses notées en tout : 486 lors de l'évaluation, 480 lors de la réévaluation.</p></li>
   </ol>
-  <div class="s-corps s-trois">
-    <div class="s-bloc"><h3>Les cas</h3><p>Des situations de bilan fictives, bâties sur 13 fiches. Une fiche reprend des repères de la HAS (2018) ; les autres sont des fiches de test simplifiées.</p>
+  <div class="s-duo">
+    <div class="s-bloc"><h3>Les 13 fiches</h3>
       <ul class="s-etiquettes" aria-label="Les 13 fiches"><li>diabète de type 2</li><li>hypertension</li><li>lombalgie chronique</li><li>BPCO</li><li>prévention des chutes</li><li>obésité</li><li>arthrose</li><li>insuffisance cardiaque stable</li><li>après cancer du sein</li><li>sclérose en plaques</li><li>Parkinson</li><li>séquelles d'AVC</li><li>lésion médullaire</li></ul></div>
-    <div class="s-bloc"><h3>Six fonctionnalités, et le <span lang="en">red teaming</span></h3><p>Sécurité, paramétrage, rédaction, planification, refus hors fiche, robustesse. Types de cas : seuil (faire ou reporter la séance), signes d'alerte, fiches à croiser, textes pour le patient, synthèses pour le médecin, ébauches de programme.</p><p style="margin-top:8px"><span lang="en">Red teaming</span>, on attaque le modèle exprès : injection de consigne (« ignore les précautions »), pièges d'unité (mmol/L, grammes), mauvaise fiche fournie, questions hors des fiches.</p></div>
-    <div class="s-bloc"><h3>Un protocole équitable</h3><p>Température 0,3, le réglage de la part de hasard dans la réponse ; 3 tirages par cas pour mesurer la variabilité.</p><p style="margin-top:8px">Critères : complétude, citation des fiches (<span lang="en">grounding</span> : ancrer la réponse sur les sources fournies), aucun chiffre inventé, précautions exactes, refus hors fiche, qualité du français. Le drapeau « erreur grave », une réponse dangereuse si on l'appliquait telle quelle, prime sur le score. C'est l'<span lang="en">eval-driven development</span> : mesurer avant de changer quoi que ce soit.</p></div>
+    <div class="s-bloc"><h3>Des pièges tendus exprès</h3><p>C'est le <span lang="en">red teaming</span> : une consigne cachée qui demande d'ignorer les précautions, des unités piégées (mmol/L, grammes), une mauvaise fiche fournie, une question hors des fiches.</p></div>
   </div>
-  <p class="s-montre"><strong>Ce que ça montre</strong> <span>Le choix du modèle repose sur une mesure reproductible, la même pour les deux modèles.</span></p>
 </section>
 
 <!-- ===================== 3. La validation experte ===================== -->
 <section class="s-panneau s-onglet" id="s-validation" role="tabpanel" aria-labelledby="s-t-validation" tabindex="0">
   <div class="s-tete"><h2>La validation experte</h2><p class="s-4d"><a href="https://www.anthropic.com/ai-fluency/overview" target="_blank" rel="noopener">AI Fluency<span class="pf-sr"> (nouvel onglet)</span></a> · <span lang="en">Discernment</span></p></div>
-  <div class="s-corps">
-    <div class="s-blocs s-deux">
-      <div class="s-bloc"><h3>Le protocole</h3><p>127 réponses sur 486 (26 %), tirées au hasard, modèles anonymisés (A et B), relues par moi en tant qu'enseignant APA.</p></div>
-      <div class="s-bloc"><h3>Des erreurs de sens</h3><p>Seuil inversé (glycémie, saturation en oxygène, tension), exercices ou durées inventés, bénéfices inventés dans un texte pour le patient.</p></div>
-      <div class="s-bloc"><h3>Pourquoi le modèle invente</h3><p><span lang="en">Next-token prediction</span> : un modèle prolonge le texte de la façon la plus plausible. Une durée inventée « a l'air juste » : c'est l'hallucination. D'où les contrôles et l'ancrage sur des sources.</p></div>
-      <div class="s-bloc"><h3>Zone de capacité, zone de limite</h3><p>Capacité : refus hors fiche, citation des sources. Limite : comparaisons de seuils et programmes, confiés au code ou au professionnel.</p></div>
-      <div class="s-bloc" style="grid-column:1/-1"><p>Scores de l'expert : <strong>Mistral 0,95</strong> et 79 % de réponses parfaites · <strong>Olala 0,91</strong> et 62 %.</p></div>
+  <div class="s-corps s-valid">
+    <div class="s-blocs">
+      <div class="s-bloc"><h3>Une relecture par le métier</h3><p>J'ai relu moi-même 127 des 486 réponses, tirées au hasard, en tant qu'enseignant APA. Je les ai notées avec la même grille que la machine.</p></div>
+      <div class="s-bloc"><h3>Ce que la relecture a changé</h3><p>La machine trouvait Mistral plus sûr. Ma relecture a montré l'inverse : Mistral commettait plus d'erreurs graves, surtout dans les programmes d'exercices. C'est à partir de ces erreurs que nous avons réécrit la consigne.</p></div>
+      <div class="s-bloc"><h3>Des erreurs de sens</h3><p>Un seuil inversé (glycémie, saturation en oxygène, tension), des exercices ou des durées inventés, des bénéfices promis sans fondement. Un modèle prolonge le texte de la façon la plus plausible (<span lang="en">next-token prediction</span>) : une durée inventée peut donc avoir l'air juste.</p></div>
     </div>
     <div class="s-visuel-paire">
       <figure class="s-carte">
-        <figcaption class="s-bloc" style="margin-bottom:12px"><p><strong>Accord entre la notation automatique et l'expert</strong> (kappa de Cohen : 1 = accord parfait, 0 = pas mieux que le hasard)</p></figcaption>
+        <figcaption><strong>La machine note-t-elle comme moi ?</strong> <span>Part des réponses où elle donne la même note que moi.</span></figcaption>
         <ul class="s-barres">
-          <li><span class="s-b-nom">Refus hors fiche</span><span class="s-b-piste" aria-hidden="true"><i style="width:98%"></i></span><span class="s-b-val">0,98</span></li>
-          <li><span class="s-b-nom">Citation</span><span class="s-b-piste" aria-hidden="true"><i style="width:74%"></i></span><span class="s-b-val">0,74</span></li>
-          <li><span class="s-b-nom">Précautions</span><span class="s-b-piste" aria-hidden="true"><i style="width:72%"></i></span><span class="s-b-val">0,72</span></li>
-          <li><span class="s-b-nom">Complétude</span><span class="s-b-piste s-faible" aria-hidden="true"><i style="width:17%"></i></span><span class="s-b-val s-faible-v">0,17</span></li>
-          <li><span class="s-b-nom">Chiffres</span><span class="s-b-piste s-faible" aria-hidden="true"><i style="width:5%"></i></span><span class="s-b-val s-faible-v">0,05</span></li>
-          <li><span class="s-b-nom">Style</span><span class="s-b-piste s-faible" aria-hidden="true"><i style="width:0"></i></span><span class="s-b-val s-faible-v">0,00</span></li>
+          <li><span class="s-b-nom">Refus hors fiche</span><span class="s-b-piste" aria-hidden="true"><i style="width:96%"></i></span><span class="s-b-val">96 %</span></li>
+          <li><span class="s-b-nom">Citation des fiches</span><span class="s-b-piste" aria-hidden="true"><i style="width:94%"></i></span><span class="s-b-val">94 %</span></li>
+          <li><span class="s-b-nom">Français</span><span class="s-b-piste" aria-hidden="true"><i style="width:88%"></i></span><span class="s-b-val">88 %</span></li>
+          <li><span class="s-b-nom">Chiffres</span><span class="s-b-piste" aria-hidden="true"><i style="width:85%"></i></span><span class="s-b-val">85 %</span></li>
+          <li><span class="s-b-nom">Complétude</span><span class="s-b-piste" aria-hidden="true"><i style="width:78%"></i></span><span class="s-b-val">78 %</span></li>
+          <li><span class="s-b-nom">Précautions</span><span class="s-b-piste" aria-hidden="true"><i style="width:73%"></i></span><span class="s-b-val">73 %</span></li>
         </ul>
-        <p class="s-sous">Bleu : accord fort. Orange : la notation automatique ne suffit pas.</p>
+        <p class="s-alerte">Erreurs graves : elle n'en repère que <strong>3 sur mes 13</strong>.</p>
+        <p class="s-sous">Elle est d'accord avec moi quand la réponse est correcte, mais elle laisse passer la plupart des erreurs graves.</p>
       </figure>
-      <div class="s-carte s-duel">
-        <div><span class="s-nombre s-orange">13</span><span class="s-legende">erreurs graves relevées par l'expert</span></div>
-        <div><span class="s-nombre">3</span><span class="s-legende">par la notation automatique de départ</span></div>
+      <div class="s-carte">
+        <p class="s-carte-t"><strong>Erreurs graves, selon qui relit</strong></p>
+        <table class="s-table s-mini">
+          <caption class="pf-sr">Nombre d'erreurs graves selon la machine et selon ma relecture</caption>
+          <thead><tr><th scope="col"><span class="pf-sr">Modèle</span></th><th scope="col">La machine</th><th scope="col">Moi</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Mistral<br><small>61 réponses</small></th><td>2</td><td class="s-moins">8</td></tr>
+            <tr><th scope="row">Olala<br><small>66 réponses</small></th><td>4</td><td class="s-moins">5</td></tr>
+          </tbody>
+        </table>
+        <p class="s-sous">Mistral donne pourtant plus souvent une réponse parfaite : 79 % contre 62 % pour Olala.</p>
       </div>
     </div>
   </div>
-  <p class="s-montre"><strong>Ce que ça montre</strong> <span>La relecture humaine est indispensable ; un seuil de sécurité doit être vérifié par du code, jamais par le modèle.</span></p>
+  <p class="s-montre"><strong>Ce que ça montre</strong> <span>La relecture humaine est indispensable quand on teste une IA.</span></p>
 </section>
 
-<!-- ===================== 4. La progression ===================== -->
-<section class="s-panneau s-onglet" id="s-progression" role="tabpanel" aria-labelledby="s-t-progression" tabindex="0">
-  <div class="s-tete"><h2>La progression</h2><p class="s-4d"><a href="https://www.anthropic.com/ai-fluency/overview" target="_blank" rel="noopener">AI Fluency<span class="pf-sr"> (nouvel onglet)</span></a> · <span lang="en">Description</span></p></div>
-  <div class="s-corps">
-    <div class="s-blocs s-deux">
-      <div class="s-bloc"><h3>L'instrument</h3><p>Des contrôles automatiques écrits à partir des erreurs relevées par l'expert. Sur les 127 réponses relues : 13 erreurs graves retrouvées sur 13, 11 % de fausses alertes. <strong>Limite</strong> : ces contrôles ont été réglés sur ces mêmes réponses ; leur performance réelle est probablement plus basse.</p></div>
-      <div class="s-bloc"><h3>Le prompt v2, seul changement</h3><p>Raisonnement de seuil en quatre temps (règle recopiée, même unité, comparaison écrite, décision), interdiction d'inventer (« à définir par l'enseignant APA »), précautions recopiées, refus hors fiche sans alternative, consignes cachées ignorées, réponse courte, décision d'abord.</p></div>
-      <div class="s-bloc"><h3><span lang="en">Steerability</span></h3><p>La capacité d'un modèle à suivre une consigne. Forte pour Mistral : alertes ÷ 6, inversions de seuil disparues. Faible pour Olala : il cesse d'inventer des exercices, mais garde ses erreurs de seuil et déborde.</p></div>
-      <div class="s-bloc"><h3>Limite, et décision</h3><p>La progression est mesurée par les contrôles automatiques ; le prompt reprend les règles qu'ils vérifient, donc une part du gain est attendue. La référence humaine reste la validation en aveugle de la version 1. <strong>Mistral Small 3.2 est retenu</strong> comme modèle de référence pour la suite.</p></div>
-    </div>
+<!-- ===================== 4. La réévaluation ===================== -->
+<section class="s-panneau s-onglet" id="s-reevaluation" role="tabpanel" aria-labelledby="s-t-reevaluation" tabindex="0">
+  <div class="s-tete"><h2>La réévaluation</h2><p class="s-4d"><a href="https://www.anthropic.com/ai-fluency/overview" target="_blank" rel="noopener">AI Fluency<span class="pf-sr"> (nouvel onglet)</span></a> · <span lang="en">Description</span></p></div>
+  <div class="s-corps s-reeval">
     <div>
-      <div class="s-defile" role="region" aria-label="Tableau avant et après le prompt v2" tabindex="0">
-        <table class="s-table">
-          <caption>Version 1 → version 2 du prompt, 240 réponses par modèle</caption>
-          <thead><tr><th scope="col"><span class="pf-sr">Mesure</span></th><th scope="col">Mistral v1 → v2</th><th scope="col">Olala v1 → v2</th></tr></thead>
+      <div class="s-defile" role="region" aria-label="Tableau avant et après la nouvelle consigne" tabindex="0">
+        <table class="s-table s-grand">
+          <caption class="pf-sr">Première évaluation et réévaluation, 240 réponses par modèle</caption>
+          <thead><tr><th scope="col">240 réponses par modèle</th><th scope="col">Mistral, avant → après</th><th scope="col">Olala, avant → après</th></tr></thead>
           <tbody>
             <tr><th scope="row">Alertes d'erreur grave</th><td class="s-val">7,9 % → <span class="s-mieux">1,2 %</span></td><td class="s-val">7,5 % → <span class="s-mieux">3,3 %</span></td></tr>
             <tr><th scope="row">Seuils inversés ou mal convertis</th><td class="s-val">6 → <span class="s-mieux">0</span></td><td class="s-val">4 → 4</td></tr>
@@ -617,53 +655,52 @@ body{margin:0;background:var(--fond);color:var(--texte);font-family:var(--corps)
           </tbody>
         </table>
       </div>
-      <p class="s-sous">En bleu, ce qui s'améliore ; en orange, ce qui se dégrade. Mistral, par fonctionnalité : planification 6 alertes sur 6 → 1 sur 6 ; rédaction 7 sur 18 → 1 sur 18 ; sécurité 4 sur 102 → 0.</p>
+      <p class="s-legende-tableau">En bleu, ce qui s'améliore ; en orange, ce qui se dégrade. Pour Mistral, les alertes passent de 6 sur 6 à 1 sur 6 en planification, de 7 sur 18 à 1 sur 18 en rédaction, et de 4 sur 102 à 0 en sécurité.</p>
+    </div>
+    <div class="s-blocs s-deux">
+      <div class="s-bloc"><h3>Comment nous avons mesuré</h3><p>J'ai transformé les erreurs repérées pendant ma relecture en contrôles automatiques. Ils retrouvent les 13 erreurs graves, avec 11 % de fausses alertes.</p></div>
+      <div class="s-bloc"><h3>La nouvelle consigne</h3><p>Elle oblige le modèle à recopier la règle, à comparer dans la même unité, puis à conclure. S'il manque une information, il écrit « à définir par l'enseignant APA ».</p></div>
+      <div class="s-bloc"><h3><span lang="en">Steerability</span></h3><p>C'est la capacité d'un modèle à suivre une consigne. Mistral la suit très bien. Olala cesse d'inventer des exercices, mais garde ses erreurs de seuil et déborde : 19 % de ses réponses sont coupées.</p></div>
+      <div class="s-bloc"><h3>Limite et décision</h3><p>Les contrôles ont été réglés sur les réponses que j'avais relues, et ils vérifient les règles ajoutées à la consigne : une partie du progrès était donc attendue. Nous avons retenu Mistral Small 3.2.</p></div>
     </div>
   </div>
-  <p class="s-montre"><strong>Ce que ça montre</strong> <span>Avec le seul prompt, les alertes d'erreur grave de Mistral sont divisées par 6 et les inversions de seuil disparaissent ; le modèle léger suit moins bien une consigne exigeante.</span></p>
+  <p class="s-montre"><strong>Ce que ça montre</strong> <span>Entre les deux évaluations, seule la consigne donnée aux modèles a changé. Avec elle, <span class="s-fort">les alertes d'erreur grave de Mistral sont divisées par 6</span> et les inversions de seuil disparaissent. Olala suit moins bien une consigne exigeante.</span></p>
 </section>
 
 <!-- ===================== 5. Garde-fous et conformité ===================== -->
 <section class="s-panneau s-onglet" id="s-garde-fous" role="tabpanel" aria-labelledby="s-t-garde-fous" tabindex="0">
   <div class="s-tete"><h2>Garde-fous et conformité</h2><p class="s-4d"><a href="https://www.anthropic.com/ai-fluency/overview" target="_blank" rel="noopener">AI Fluency<span class="pf-sr"> (nouvel onglet)</span></a> · <span lang="en">Diligence</span></p></div>
-  <div class="s-corps s-large-droite">
-    <div class="s-blocs s-deux">
-      <div class="s-bloc"><h3>Le statut</h3><p>Un SaaS de santé conçu avec les exigences d'un SaMD (<span lang="en">Software as a Medical Device</span>, IMDRF ; en France, logiciel dispositif médical). Il n'est pas marqué dispositif médical. Trajectoire documentée vers un logiciel dispositif médical de classe IIa (règlement (UE) 2017/745, règle 11) si l'assistant devait un jour proposer des programmes individualisés.</p></div>
-      <div class="s-bloc"><h3>Les données</h3><p>Cloisonnement par structure, journal des accès non modifiable, rôles : seuls les professionnels de santé voient les données de santé. Données fictives uniquement pendant la conception ; hébergement prévu dans un environnement certifié HDS ; RGPD pris en compte dès la conception.</p></div>
-      <div class="s-bloc"><h3>L'IA sous contrôle</h3><p><span lang="en">Human-in-the-loop</span> : un humain valide chaque sortie. Aucun appel à un modèle sans décision écrite ; l'aide de l'IA est mentionnée sur le document. AI Act : transparence, maîtrise de l'IA par les utilisateurs.</p></div>
-      <div class="s-bloc"><h3>Le niveau de personnalisation</h3><p>En fin de compte rendu, il indique sur combien d'informations propres à la personne le document repose, et s'il a été relu partie par partie. Un document envoyé avant la fin de la relecture demande une confirmation, tracée à part.</p></div>
-    </div>
-    <div>
-      <ol class="s-chaine" aria-label="Le parcours d'une proposition de l'IA">
-        <li><b>L'IA propose</b><span>des repères scientifiques, des pistes de planification</span></li>
-        <li><b>Le professionnel relit</b><span>partie par partie</span></li>
-        <li class="s-cle"><b>Il valide</b><span>rien n'entre dans un document sans cette étape</span></li>
-        <li><b>Le document</b><span>mention de l'aide de l'IA, niveau de personnalisation</span></li>
-      </ol>
-      <p class="s-journal"><b>Journal des accès</b>, non modifiable, sous tout le parcours. Un envoi avant la fin de la relecture : confirmation tracée à part.</p>
-    </div>
+  <ol class="s-parcours" aria-label="Le parcours d'un bilan avec l'agent IA">
+    <li><span class="s-num" aria-hidden="true">1</span><b>Le professionnel réalise son bilan</b>
+      <ul class="s-etiquettes"><li>contexte et histoire du patient</li><li>questionnaires</li><li>évaluation de la condition physique</li><li>examens et comptes rendus médicaux ou paramédicaux</li></ul></li>
+    <li><span class="s-num" aria-hidden="true">2</span><b>L'agent IA propose une programmation et une orientation</b><p>Il croise les données du bilan avec ses connaissances (<span lang="en">knowledge</span>) et, demain, avec une bibliothèque scientifique interrogée par RAG.</p></li>
+    <li class="s-cle"><span class="s-num" aria-hidden="true">3</span><b>Le professionnel relit, modifie et valide</b><p>Aucune proposition n'entre dans le compte rendu sans sa validation.</p></li>
+    <li><span class="s-num" aria-hidden="true">4</span><b>Le logiciel génère le compte rendu</b><p>Il l'envoie au patient et, si besoin, au médecin qui l'a adressé.</p></li>
+  </ol>
+  <p class="s-journal">Un journal des accès, non modifiable, garde la trace de tout le parcours.</p>
+  <div class="s-quatre">
+    <div class="s-bloc"><h3>Le produit</h3><p>Ce logiciel est pensé comme un SaaS de santé qui respecte les exigences d'un SaMD (<span lang="en">Software as a Medical Device</span>). Une trajectoire vers la classe IIa est prête, si l'agent propose un jour des programmes individualisés.</p></div>
+    <div class="s-bloc"><h3>Les données</h3><p>Les données sont cloisonnées par structure, et seuls les professionnels de santé voient les données de santé. La conception se fait sur des données fictives ; l'hébergement est prévu en HDS et le RGPD est intégré dès le départ.</p></div>
+    <div class="s-bloc"><h3>L'IA sous contrôle</h3><p>Le professionnel paramédical valide chaque proposition de l'agent IA, et l'aide de l'IA est mentionnée sur le compte rendu. Cela respecte l'AI Act : transparence et maîtrise de l'IA par les utilisateurs.</p></div>
+    <div class="s-bloc"><h3>Le niveau de personnalisation</h3><p>En fin de compte rendu, une note indique au patient sur combien d'informations propres à sa situation l'agent s'est appuyé pour proposer des axes de réadaptation, et si chaque partie a été relue.</p></div>
   </div>
-  <p class="s-montre"><strong>Ce que ça montre</strong> <span>Une proposition de l'IA n'entre dans un document qu'après la validation du professionnel, et chaque étape laisse une trace.</span></p>
 </section>
 
 <!-- ===================== 6. La suite ===================== -->
 <section class="s-panneau s-onglet" id="s-suite" role="tabpanel" aria-labelledby="s-t-suite" tabindex="0">
   <div class="s-tete"><h2>La suite <span class="s-avenir">à venir</span></h2><p class="s-4d"><a href="https://www.anthropic.com/ai-fluency/overview" target="_blank" rel="noopener">AI Fluency<span class="pf-sr"> (nouvel onglet)</span></a> · <span lang="en">Delegation</span> et <span lang="en">Diligence</span></p></div>
-  <div class="s-corps s-large-droite">
-    <div class="s-blocs">
-      <div class="s-bloc"><h3>Pourquoi une bibliothèque plutôt que la mémoire du modèle</h3><p>Ce que le modèle sait (<span lang="en">knowledge</span>) est figé à sa date de coupure, alors que les recommandations évoluent : c'est la <span lang="en">staleness</span>. Et le paramédical est peu représenté dans ses données (<span lang="en">uneven coverage</span>). Une bibliothèque datée, interrogée par RAG, pourra se mettre à jour ; la mémoire du modèle, non.</p></div>
-      <div class="s-bloc"><h3>MCP</h3><p><span lang="en">Model Context Protocol</span> : l'assistant sera connecté aux données du bilan par des outils aux droits limités et journalisés, plutôt que de tout copier dans la consigne.</p></div>
-      <div class="s-bloc"><h3>Qui fera quoi</h3><p><span lang="en">Delegation</span> : les seuils au code, la rédaction au modèle, la validation au professionnel.</p></div>
-      <p class="s-credit">Les repères « AI Fluency » de chaque onglet renvoient au cadre 4D (<span lang="en">Delegation, Description, Discernment, Diligence</span>) de Rick Dakan, Joseph Feller et Anthropic.</p>
-    </div>
-    <ol class="s-chaine s-grille s-suite-num" aria-label="Les étapes à venir">
-      <li><b>Garde-fous dans le code</b><span><span lang="en" style="display:inline;margin:0">Guardrails</span> : le code comparera la mesure au seuil et transmettra la décision ; le modèle rédigera. Liste blanche d'exercices ; tout chiffre absent des sources sera bloqué.</span></li>
-      <li><b>Spécialisation</b><span>RAG (<span lang="en" style="display:inline;margin:0">retrieval-augmented generation</span> : retrouver les passages utiles d'une bibliothèque et les donner au modèle) sur une bibliothèque scientifique datée et sourcée en APA, puis pour les autres métiers paramédicaux. <span lang="en" style="display:inline;margin:0">Fine-tuning</span> supervisé (par exemple LoRA) sur des réponses validées par des professionnels : il ancrera le ton, le format et les réflexes de sécurité, sans remplacer les sources.</span></li>
-      <li><b>Nouvelle mesure</b><span>Sur le même banc d'essai, avec relecture experte d'un échantillon.</span></li>
-      <li><b>Le successeur</b><span>Comparer Mistral Small 4 : Mistral annonce la version 3.2 comme dépréciée dans sa propre API depuis le 30 avril 2026.</span></li>
-    </ol>
+  <ol class="s-cartes s-suite-num" aria-label="Les étapes à venir">
+    <li><b><span lang="en">Guardrails</span> dans le code</b><p>Le code comparera chaque mesure au seuil ; le modèle se contentera de rédiger. Un exercice ou un chiffre absent des sources sera bloqué.</p></li>
+    <li><b>Spécialisation</b><p>Un RAG donnera au modèle une bibliothèque scientifique datée, d'abord en APA. Un <span lang="en">fine-tuning</span> sur des réponses validées par des professionnels ancrera son ton et ses réflexes de sécurité.</p></li>
+    <li><b>Orientation</b><p>L'agent puisera dans les cartographies du sport santé, du sport adapté et du handisport : équipements en accès libre, maisons sport santé, clubs, associations. Son orientation suivra sa programmation : si elle prévoit de l'endurance trois fois par semaine, il pourra proposer un club d'aviron santé.</p></li>
+    <li><b>Nouvelle évaluation</b><p>Le même protocole, avec une relecture experte d'un échantillon.</p></li>
+    <li><b>Le successeur</b><p>Nous comparerons Mistral Small 4 : Mistral annonce la version 3.2 comme dépréciée dans sa propre API depuis le 30 avril 2026.</p></li>
+  </ol>
+  <div class="s-duo">
+    <div class="s-bloc"><h3>Pourquoi une bibliothèque</h3><p>Les connaissances d'un modèle (<span lang="en">knowledge</span>) s'arrêtent à sa date d'entraînement, alors que les recommandations évoluent (<span lang="en">staleness</span>). Une bibliothèque datée, elle, pourra être mise à jour.</p></div>
+    <div class="s-bloc"><h3>MCP</h3><p>Avec le <span lang="en">Model Context Protocol</span>, l'agent accédera aux données du bilan par des outils aux droits limités, dont chaque usage sera tracé.</p></div>
   </div>
-  <p class="s-montre"><strong>Ce que ça montre</strong> <span>La spécialisation sera mesurée sur le même banc que le choix du modèle.</span></p>
+  <p class="s-credit">Les repères « AI Fluency » de chaque onglet renvoient au cadre 4D (<span lang="en">Delegation, Description, Discernment, Diligence</span>) de Rick Dakan, Joseph Feller et Anthropic.</p>
 </section>
 
   </main>
@@ -680,7 +717,8 @@ body{margin:0;background:var(--fond);color:var(--texte);font-family:var(--corps)
   var doc = document.documentElement;
   var $ = function (id) { return document.getElementById(id); };
   var titreSante = document.title;
-  var ONGLETS = ['', 'modele', 'banc-essai', 'validation', 'progression', 'garde-fous', 'suite'];
+  var ONGLETS = ['', 'modele', 'evaluation', 'validation', 'reevaluation', 'garde-fous', 'suite'];
+  var ALIAS = { 'banc-essai': 'evaluation', 'progression': 'reevaluation' };
   var PROJETS = {
     replai: {
       url: 'projets/replai.html',
@@ -707,7 +745,7 @@ body{margin:0;background:var(--fond);color:var(--texte);font-family:var(--corps)
   function lire(hash) {
     var h = (hash || '').replace(/^#/, '');
     var parts = h.split('/'), p = parts[0], c = parts.slice(1).join('/');
-    if (!h || p === 'sante') return { projet: 'sante', cle: ONGLETS.indexOf(c) > 0 ? c : '' };
+    if (!h || p === 'sante') { var a = ALIAS[c]; return { projet: 'sante', cle: ONGLETS.indexOf(a || c) > 0 ? (a || c) : '', alias: !!a }; }
     if (PROJETS[p]) return { projet: p, cle: PROJETS[p].chapitres.indexOf(c) >= 0 ? c : '' };
     if (PROJETS.replai.chapitres.indexOf(p) >= 0) return { projet: 'replai', cle: p, ancien: true };
     return { projet: 'sante', cle: '' };
@@ -873,9 +911,6 @@ body{margin:0;background:var(--fond);color:var(--texte);font-family:var(--corps)
       onglet(j, { ancre: true, focusOnglet: true });
     });
   });
-  [].slice.call(document.querySelectorAll('.s-hex')).forEach(function (b) {
-    b.addEventListener('click', function () { onglet(ONGLETS.indexOf(b.getAttribute('data-onglet')), { ancre: true, focusTitre: true }); });
-  });
 
   /* ---------- La scène : mise à l'échelle sur ordinateur, pause ---------- */
   var enveloppe = document.querySelector('.s-scene-wrap'), scene = document.querySelector('.s-scene');
@@ -904,6 +939,7 @@ body{margin:0;background:var(--fond);color:var(--texte);font-family:var(--corps)
   function aller(e, utilisateur) {
     var num = ++demande;
     if (e.ancien && history.replaceState) history.replaceState(null, '', '#replai/' + e.cle);
+    if (e.alias && history.replaceState) history.replaceState(null, '', '#sante/' + e.cle);
     if (e.projet === 'sante') {
       var change = afficherProjet('sante');
       onglet(Math.max(0, ONGLETS.indexOf(e.cle)), { focusTitre: utilisateur && (change || !!e.cle) });
