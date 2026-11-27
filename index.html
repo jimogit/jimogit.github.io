@@ -119,13 +119,13 @@ body{margin:0;background:var(--fond);color:var(--texte);font-family:var(--corps)
 .s-ciel::after{opacity:.4;background-image:radial-gradient(circle,#ffffff 0 1px,transparent 1.6px),radial-gradient(circle,var(--bleu) 0 1.3px,transparent 2px),radial-gradient(circle,var(--orange) 0 1.2px,transparent 1.8px);background-size:173px 131px,257px 199px,389px 311px;background-position:23px 41px,97px 13px,211px 157px;animation:s-scintille 7s ease-in-out infinite}
 @keyframes s-scintille{50%{opacity:.15}}
 .s-accueil-in{position:relative;max-width:1440px;margin:0 auto;padding:28px 20px 36px}
-.s-intro{display:flex;flex-direction:column;gap:16px}
-.s-h1{font-family:var(--titres);font-weight:500;font-size:clamp(30px,3vw,42px);line-height:1.08;letter-spacing:-.02em}
-.s-message{font-size:18px;line-height:1.5;color:var(--doux)}
-.s-moi{display:flex;gap:14px;align-items:flex-start;margin-top:6px;padding:14px 16px;border:1px solid var(--filet);border-radius:14px;background:var(--surf);font-size:15px;line-height:1.45}
+.s-intro{display:flex;flex-direction:column;gap:14px}
+.s-h1{font-family:var(--titres);font-weight:500;font-size:clamp(28px,2.6vw,38px);line-height:1.08;letter-spacing:-.02em}
+.s-message{font-size:17px;line-height:1.5;color:var(--doux)}
+.s-moi{display:flex;gap:14px;align-items:flex-start;margin-top:2px;padding:12px 14px;border:1px solid var(--filet);border-radius:14px;background:var(--surf);font-size:14.5px;line-height:1.45}
 .s-moi .pf-mono{margin-top:2px}
-.s-tags{margin-top:6px!important;padding:0;list-style:none;display:flex;flex-wrap:wrap;gap:8px;font-size:13.5px;color:var(--doux)}
-.s-tags li{font-style:normal!important;padding:4px 11px;border:1px solid var(--filet);border-radius:14px;background:var(--surf)}
+.s-tags{margin-top:2px!important;padding:0;list-style:none;display:flex;flex-wrap:wrap;gap:6px;font-size:13px;color:var(--doux)}
+.s-tags li{font-style:normal!important;padding:3px 10px;border:1px solid var(--filet);border-radius:14px;background:var(--surf)}
 .s-tags .s-tag-avenir{border-style:dashed;border-color:var(--contour);background:none}
 .s-tags .s-tag-sep{border:0;background:none;padding:4px 2px 4px 6px}
 
@@ -157,13 +157,21 @@ body{margin:0;background:var(--fond);color:var(--texte);font-family:var(--corps)
 .s-legende{display:block;margin-top:5px;font-size:13.5px;line-height:1.3;color:var(--doux)}
 .s-note{padding-top:10px;border-top:1px solid var(--filet);font-size:12.5px;line-height:1.35;color:var(--doux)}
 .s-sources-t{margin:26px 0 10px!important;text-align:center;font-size:11.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--doux)}
-.s-sources{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,104px);justify-content:center;gap:10px 8px}
+.s-sources{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,104px);justify-content:center;gap:10px 8px}
 .s-hex{position:relative;width:104px;height:116px}
 .s-hex-fond{position:absolute;inset:0;width:100%;height:100%}
 .s-hex-fond polygon{fill:var(--surf);stroke:var(--contour);stroke-width:1.5}
 .s-hex-c{position:relative;height:100%;padding:0 12px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;text-align:center}
 .s-hex-c svg{width:20px;height:20px;fill:none;stroke:var(--bleu);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
 .s-hex-l{font-size:12.5px;font-weight:600;line-height:1.2}
+.s-hex-sortie .s-hex-fond polygon{fill:#0f1a2e;stroke:var(--bleu)}
+.s-hex-p{font-size:11px;line-height:1.2;color:var(--bleu)}
+.s-sorties{margin-top:10px}
+.s-fil-sortie{stroke-dasharray:2 9}
+.s-grain-sortie{stroke:var(--bleu)}
+.s-lien{fill:none;stroke:var(--bleu);stroke-width:1.5;stroke-dasharray:3 4}
+.s-gain{font-size:14.5px;line-height:1.45;color:var(--doux)}
+.s-gain strong{color:var(--orange);font-weight:600}
 .s-pause{display:flex;align-items:center;gap:8px;margin:20px auto 0;min-height:44px;padding:0 14px;border:1px solid var(--contour);border-radius:22px;background:var(--fond);color:var(--doux);font:400 13.5px/1 var(--corps);cursor:pointer}
 .s-pause:hover{color:var(--texte);border-color:var(--texte)}
 .s-pause svg{width:14px;height:14px;fill:currentColor}
@@ -329,7 +337,7 @@ body{margin:0;background:var(--fond);color:var(--texte);font-family:var(--corps)
   .s-chiffres .s-nombre{font-size:32px}
   .s-legende{font-size:13px}
   .s-sources-t{display:none}
-  .s-sources{display:block}
+  .s-sources,.s-sorties{display:block;margin:0}
   .s-hex{position:absolute;left:var(--x);top:var(--y);width:112px;height:124px}
   .s-pause{position:absolute;right:0;bottom:0;margin:0}
   .s-onglet{min-height:var(--haut);padding:18px 48px 14px;gap:18px}
@@ -341,7 +349,7 @@ body{margin:0;background:var(--fond);color:var(--texte);font-family:var(--corps)
   .s-duo{grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 48px}
   .s-quatre{grid-template-columns:repeat(4,minmax(0,1fr));gap:18px 28px}
   .s-cartes{grid-template-columns:repeat(5,minmax(0,1fr))}
-  .s-cartes.s-suite-num{grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
+  .s-cartes.s-suite-num{grid-template-columns:repeat(5,minmax(0,1fr));gap:18px}
   .s-parcours{grid-template-columns:1.7fr 1fr 1fr 1fr;gap:28px}
   .s-parcours>li+li::before{content:"";position:absolute;left:-21px;top:30px;width:9px;height:9px;border-right:1.5px solid var(--contour);border-bottom:1.5px solid var(--contour);transform:rotate(-45deg)}
   .s-corps.s-reeval{grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:36px}
@@ -353,9 +361,6 @@ body{margin:0;background:var(--fond);color:var(--texte);font-family:var(--corps)
   .s-onglet .s-corps{gap:24px}
   .s-barres{font-size:13.5px}
   .s-visuel-paire{display:flex;flex-direction:column;gap:16px}
-}
-@media (max-width:379px){
-  .s-sources{grid-template-columns:repeat(2,104px)}
 }
 @media (prefers-reduced-motion:reduce){
   #pf-sante *,#pf-sante *::before,#pf-sante *::after{animation:none!important;transition:none!important}
@@ -401,7 +406,8 @@ body{margin:0;background:var(--fond);color:var(--texte);font-family:var(--corps)
   <div class="s-accueil-in">
     <div class="s-intro">
       <h1 class="s-h1" id="s-titre">Choisir, tester et spécialiser une IA pour les paramédicaux</h1>
-      <p class="s-message">Un agent IA qui accompagnera l'enseignant APA, puis les autres paramédicaux, pendant leurs bilans. Il s'appuie sur les informations que le professionnel recueille : le contexte et le mode de vie de la personne, ses questionnaires, ses tests et ses examens. Il propose, le professionnel valide.</p>
+      <p class="s-message">Un agent IA qui accompagnera l'enseignant APA, puis les autres paramédicaux, pendant leurs bilans. À partir des données recueillies, il proposera une programmation et une orientation adaptées à la personne. Il propose, le professionnel valide.</p>
+      <p class="s-gain"><strong>Gain de temps estimé</strong> : 5 à 10 minutes sur un bilan de 45 à 60 minutes, pour une proposition plus complète que ce qu'un professionnel peut rédiger seul dans ce temps.</p>
       <ul class="s-tags" aria-label="Méthode">
         <li lang="en">eval-driven development</li>
         <li lang="en">grounding</li>
@@ -430,14 +436,15 @@ body{margin:0;background:var(--fond);color:var(--texte);font-family:var(--corps)
           <path class="s-fil" d="M60 262Q210 -20 350 30"/>
           <path class="s-fil" d="M140 432Q266 -30 350 30"/>
           <path class="s-fil" d="M560 92Q448 6 350 30"/>
-          <path class="s-fil" d="M640 262Q490 -20 350 30"/>
-          <path class="s-fil" d="M560 432Q434 -30 350 30"/>
+          <path class="s-fil s-fil-sortie" d="M350 30Q490 -20 640 262"/>
+          <path class="s-fil s-fil-sortie" d="M350 30Q434 -30 560 432"/>
+          <path class="s-lien" d="M622 322L580 372"/>
           <path class="s-grain" style="--rang:0" pathLength="100" d="M140 92Q252 6 350 30"/>
           <path class="s-grain" style="--rang:1" pathLength="100" d="M60 262Q210 -20 350 30"/>
           <path class="s-grain" style="--rang:2" pathLength="100" d="M140 432Q266 -30 350 30"/>
           <path class="s-grain" style="--rang:3" pathLength="100" d="M560 92Q448 6 350 30"/>
-          <path class="s-grain" style="--rang:4" pathLength="100" d="M640 262Q490 -20 350 30"/>
-          <path class="s-grain" style="--rang:5" pathLength="100" d="M560 432Q434 -30 350 30"/>
+          <path class="s-grain s-grain-sortie" style="--rang:1" pathLength="100" d="M350 30Q490 -20 640 262"/>
+          <path class="s-grain s-grain-sortie" style="--rang:3" pathLength="100" d="M350 30Q434 -30 560 432"/>
         </svg>
 
         <svg class="s-robot" viewBox="0 -4 240 242" aria-hidden="true" focusable="false">
@@ -494,7 +501,7 @@ body{margin:0;background:var(--fond);color:var(--texte);font-family:var(--corps)
         </svg>
 
         <svg class="s-eclats" viewBox="0 0 700 530" aria-hidden="true" focusable="false">
-          <circle class="s-eclat" style="--rang:0" cx="350" cy="30" r="6"/><circle class="s-eclat" style="--rang:1" cx="350" cy="30" r="6"/><circle class="s-eclat" style="--rang:2" cx="350" cy="30" r="6"/><circle class="s-eclat" style="--rang:3" cx="350" cy="30" r="6"/><circle class="s-eclat" style="--rang:4" cx="350" cy="30" r="6"/><circle class="s-eclat" style="--rang:5" cx="350" cy="30" r="6"/>
+          <circle class="s-eclat" style="--rang:0" cx="350" cy="30" r="6"/><circle class="s-eclat" style="--rang:1" cx="350" cy="30" r="6"/><circle class="s-eclat" style="--rang:2" cx="350" cy="30" r="6"/><circle class="s-eclat" style="--rang:3" cx="350" cy="30" r="6"/>
         </svg>
 
         <section class="s-chiffres" aria-labelledby="s-chiffres-t">
@@ -508,11 +515,11 @@ body{margin:0;background:var(--fond);color:var(--texte);font-family:var(--corps)
           <p class="s-note">Ce dernier chiffre vient de contrôles automatiques. L'onglet <a href="#sante/reevaluation">La réévaluation</a> en explique les limites.</p>
         </section>
 
-        <p class="s-sources-t" aria-hidden="true">Ce qui alimente l'agent IA</p>
-        <ul class="s-sources" aria-label="Ce qui alimente l'agent IA pendant le bilan">
+        <p class="s-sources-t" aria-hidden="true">Ce que reçoit l'agent IA</p>
+        <ul class="s-sources" aria-label="Ce que reçoit l'agent IA pendant le bilan">
           <li class="s-hex" style="--x:84px;--y:30px">
             <svg class="s-hex-fond" viewBox="0 0 112 124" aria-hidden="true" focusable="false"><polygon points="56,1 111,31.5 111,92.5 56,123 1,92.5 1,31.5"/></svg>
-            <span class="s-hex-c"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 5h14a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-7l-4 3v-3H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2z"/></svg><span class="s-hex-l">Contexte et mode de vie</span></span>
+            <span class="s-hex-c"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 5h14a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-7l-4 3v-3H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2z"/></svg><span class="s-hex-l">Contexte et histoire</span></span>
           </li>
           <li class="s-hex" style="--x:4px;--y:200px">
             <svg class="s-hex-fond" viewBox="0 0 112 124" aria-hidden="true" focusable="false"><polygon points="56,1 111,31.5 111,92.5 56,123 1,92.5 1,31.5"/></svg>
@@ -520,19 +527,22 @@ body{margin:0;background:var(--fond);color:var(--texte);font-family:var(--corps)
           </li>
           <li class="s-hex" style="--x:84px;--y:370px">
             <svg class="s-hex-fond" viewBox="0 0 112 124" aria-hidden="true" focusable="false"><polygon points="56,1 111,31.5 111,92.5 56,123 1,92.5 1,31.5"/></svg>
-            <span class="s-hex-c"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M2 12h4l2.5-7 4.5 14 2.5-7H22"/></svg><span class="s-hex-l">Tests de condition physique</span></span>
+            <span class="s-hex-c"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M2 12h4l2.5-7 4.5 14 2.5-7H22"/></svg><span class="s-hex-l">Condition physique</span></span>
           </li>
           <li class="s-hex" style="--x:504px;--y:30px">
             <svg class="s-hex-fond" viewBox="0 0 112 124" aria-hidden="true" focusable="false"><polygon points="56,1 111,31.5 111,92.5 56,123 1,92.5 1,31.5"/></svg>
-            <span class="s-hex-c"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7 3h7l4 4v12a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2zM14 3v4h4M9 13h6M9 17h6"/></svg><span class="s-hex-l">Examens et comptes rendus</span></span>
+            <span class="s-hex-c"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7 3h7l4 4v12a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2zM14 3v4h4M9 13h6M9 17h6"/></svg><span class="s-hex-l">Examens et bilans</span></span>
           </li>
-          <li class="s-hex" style="--x:584px;--y:200px">
+        </ul>
+        <p class="s-sources-t" aria-hidden="true">Ce qu'il propose</p>
+        <ul class="s-sources s-sorties" aria-label="Ce que propose l'agent IA, deux propositions liées entre elles">
+          <li class="s-hex s-hex-sortie" style="--x:584px;--y:200px">
             <svg class="s-hex-fond" viewBox="0 0 112 124" aria-hidden="true" focusable="false"><polygon points="56,1 111,31.5 111,92.5 56,123 1,92.5 1,31.5"/></svg>
-            <span class="s-hex-c"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 5h12a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2zM4 10h16M8 3v4M16 3v4"/></svg><span class="s-hex-l">Programmation</span></span>
+            <span class="s-hex-c"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 5h12a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2zM4 10h16M8 3v4M16 3v4"/></svg><span class="s-hex-l">Programmation</span><span class="s-hex-p">proposée par l’agent</span></span>
           </li>
-          <li class="s-hex" style="--x:504px;--y:370px">
+          <li class="s-hex s-hex-sortie" style="--x:504px;--y:370px">
             <svg class="s-hex-fond" viewBox="0 0 112 124" aria-hidden="true" focusable="false"><polygon points="56,1 111,31.5 111,92.5 56,123 1,92.5 1,31.5"/></svg>
-            <span class="s-hex-c"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 21s-6.5-5.4-6.5-10.3a6.5 6.5 0 0 1 13 0C18.5 15.6 12 21 12 21zM12 13a2.4 2.4 0 1 0 0-4.8 2.4 2.4 0 0 0 0 4.8z"/></svg><span class="s-hex-l">Orientation</span></span>
+            <span class="s-hex-c"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 21s-6.5-5.4-6.5-10.3a6.5 6.5 0 0 1 13 0C18.5 15.6 12 21 12 21zM12 13a2.4 2.4 0 1 0 0-4.8 2.4 2.4 0 0 0 0 4.8z"/></svg><span class="s-hex-l">Orientation</span><span class="s-hex-p">proposée par l’agent</span></span>
           </li>
         </ul>
 
@@ -662,8 +672,8 @@ body{margin:0;background:var(--fond);color:var(--texte);font-family:var(--corps)
   <div class="s-tete"><h2>Garde-fous et conformité</h2><p class="s-4d"><a href="https://www.anthropic.com/ai-fluency/overview" target="_blank" rel="noopener">AI Fluency<span class="pf-sr"> (nouvel onglet)</span></a> · <span lang="en">Diligence</span></p></div>
   <ol class="s-parcours" aria-label="Le parcours d'un bilan avec l'agent IA">
     <li><span class="s-num" aria-hidden="true">1</span><b>Le professionnel réalise son bilan</b>
-      <ul class="s-etiquettes"><li>contexte et histoire du patient</li><li>questionnaires</li><li>tests de condition physique</li><li>comptes rendus médicaux et paramédicaux</li><li>programmation</li><li>orientation</li></ul></li>
-    <li><span class="s-num" aria-hidden="true">2</span><b>L'agent IA propose des recommandations</b><p>Il croise les données du bilan avec ses connaissances (<span lang="en">knowledge</span>) et, demain, avec une bibliothèque scientifique interrogée par RAG.</p></li>
+      <ul class="s-etiquettes"><li>contexte et histoire du patient</li><li>questionnaires</li><li>évaluation de la condition physique</li><li>examens et comptes rendus médicaux ou paramédicaux</li></ul></li>
+    <li><span class="s-num" aria-hidden="true">2</span><b>L'agent IA propose une programmation et une orientation</b><p>Il croise les données du bilan avec ses connaissances (<span lang="en">knowledge</span>) et, demain, avec une bibliothèque scientifique interrogée par RAG.</p></li>
     <li class="s-cle"><span class="s-num" aria-hidden="true">3</span><b>Le professionnel relit, modifie et valide</b><p>Aucune proposition n'entre dans le compte rendu sans sa validation.</p></li>
     <li><span class="s-num" aria-hidden="true">4</span><b>Le logiciel génère le compte rendu</b><p>Il l'envoie au patient et, si besoin, au médecin qui l'a adressé.</p></li>
   </ol>
@@ -682,6 +692,7 @@ body{margin:0;background:var(--fond);color:var(--texte);font-family:var(--corps)
   <ol class="s-cartes s-suite-num" aria-label="Les étapes à venir">
     <li><b><span lang="en">Guardrails</span> dans le code</b><p>Le code comparera chaque mesure au seuil ; le modèle se contentera de rédiger. Un exercice ou un chiffre absent des sources sera bloqué.</p></li>
     <li><b>Spécialisation</b><p>Un RAG donnera au modèle une bibliothèque scientifique datée, d'abord en APA. Un <span lang="en">fine-tuning</span> sur des réponses validées par des professionnels ancrera son ton et ses réflexes de sécurité.</p></li>
+    <li><b>Orientation</b><p>L'agent puisera dans les cartographies du sport santé, du sport adapté et du handisport : équipements en accès libre, maisons sport santé, clubs, associations. Son orientation suivra sa programmation : si elle prévoit de l'endurance trois fois par semaine, il pourra proposer un club d'aviron santé.</p></li>
     <li><b>Nouvelle évaluation</b><p>Le même protocole, avec une relecture experte d'un échantillon.</p></li>
     <li><b>Le successeur</b><p>Nous comparerons Mistral Small 4 : Mistral annonce la version 3.2 comme dépréciée dans sa propre API depuis le 30 avril 2026.</p></li>
   </ol>
