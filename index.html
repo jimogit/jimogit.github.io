@@ -306,6 +306,15 @@ body{margin:0;background:var(--fond);color:var(--texte);font-family:var(--corps)
 .s-num{display:flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:50%;border:1.5px solid var(--bleu);font:500 15px/1 var(--titres);color:var(--bleu)}
 .s-parcours>li.s-cle .s-num{background:var(--bleu);color:var(--fond)}
 .s-montre .s-fort{color:var(--bleu);font-weight:600}
+.s-alerte{margin-top:12px!important;font-size:15px;color:var(--texte)}
+.s-alerte strong{color:var(--orange);font-weight:600}
+.s-carte-t{margin-bottom:8px!important;font-size:14.5px}
+.s-table.s-mini{font-size:15px}
+.s-table.s-mini td{font:500 26px/1 var(--titres);text-align:center;vertical-align:middle}
+.s-table.s-mini thead th{text-align:center}
+.s-table.s-mini td.s-moins{color:var(--orange)}
+.s-table.s-mini tbody th small{font-size:12.5px}
+
 .s-carte figcaption{margin-bottom:12px;font-size:14.5px;line-height:1.4;color:var(--doux)}
 .s-carte figcaption strong{display:block;color:var(--texte);font-weight:600}
 
@@ -326,7 +335,8 @@ body{margin:0;background:var(--fond);color:var(--texte);font-family:var(--corps)
   .s-onglet{min-height:var(--haut);padding:18px 48px 14px;gap:18px}
   .s-corps{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px;align-items:start}
   .s-blocs.s-deux{grid-template-columns:repeat(2,minmax(0,1fr))}
-          .s-visuel-paire{display:grid;grid-template-columns:minmax(0,1fr) 200px;gap:16px}
+          .s-visuel-paire{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:16px}
+  .s-corps.s-valid{grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr)}
   .s-trio{grid-template-columns:repeat(3,minmax(0,1fr))}
   .s-duo{grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 48px}
   .s-quatre{grid-template-columns:repeat(4,minmax(0,1fr));gap:18px 28px}
@@ -577,30 +587,37 @@ body{margin:0;background:var(--fond);color:var(--texte);font-family:var(--corps)
 <!-- ===================== 3. La validation experte ===================== -->
 <section class="s-panneau s-onglet" id="s-validation" role="tabpanel" aria-labelledby="s-t-validation" tabindex="0">
   <div class="s-tete"><h2>La validation experte</h2><p class="s-4d"><a href="https://www.anthropic.com/ai-fluency/overview" target="_blank" rel="noopener">AI Fluency<span class="pf-sr"> (nouvel onglet)</span></a> · <span lang="en">Discernment</span></p></div>
-  <div class="s-corps">
-    <div class="s-blocs s-deux">
-      <div class="s-bloc"><h3>Une relecture par le métier</h3><p>J'ai relu moi-même 127 réponses tirées au hasard, en tant qu'enseignant APA, pour vérifier la notation automatique.</p></div>
-      <div class="s-bloc"><h3>Ce que j'ai trouvé</h3><p>Des erreurs de sens : un seuil inversé (glycémie, saturation en oxygène, tension), un exercice ou une durée inventés, un bénéfice promis sans fondement.</p></div>
-      <div class="s-bloc"><h3>Pourquoi l'IA se trompe ainsi</h3><p>Un modèle prolonge le texte de la façon la plus plausible (<span lang="en">next-token prediction</span>). Une durée inventée peut donc avoir l'air juste : c'est une hallucination.</p></div>
-      <div class="s-bloc"><h3>Ce qu'elle fait bien, et moins bien</h3><p>Elle refuse bien les questions hors fiche et cite ses sources. Elle se trompe plus souvent sur les seuils et les programmes.</p></div>
-      <div class="s-bloc s-plein"><p>Selon ma relecture, <strong>Mistral</strong> obtient un score moyen de 0,95 et 79 % de réponses parfaites, <strong>Olala</strong> 0,91 et 62 %.</p></div>
+  <div class="s-corps s-valid">
+    <div class="s-blocs">
+      <div class="s-bloc"><h3>Une relecture par le métier</h3><p>J'ai relu moi-même 127 des 486 réponses, tirées au hasard, en tant qu'enseignant APA. Je les ai notées avec la même grille que la machine.</p></div>
+      <div class="s-bloc"><h3>Ce que la relecture a changé</h3><p>La machine trouvait Mistral plus sûr. Ma relecture a montré l'inverse : Mistral commettait plus d'erreurs graves, surtout dans les programmes d'exercices. C'est à partir de ces erreurs que nous avons réécrit la consigne.</p></div>
+      <div class="s-bloc"><h3>Des erreurs de sens</h3><p>Un seuil inversé (glycémie, saturation en oxygène, tension), des exercices ou des durées inventés, des bénéfices promis sans fondement. Un modèle prolonge le texte de la façon la plus plausible (<span lang="en">next-token prediction</span>) : une durée inventée peut donc avoir l'air juste.</p></div>
     </div>
     <div class="s-visuel-paire">
       <figure class="s-carte">
-        <figcaption><strong>La machine note-t-elle comme moi ?</strong> <span>Kappa de Cohen : 1 signifie un accord parfait, 0 un accord dû au hasard.</span></figcaption>
+        <figcaption><strong>La machine note-t-elle comme moi ?</strong> <span>Part des réponses où elle donne la même note que moi.</span></figcaption>
         <ul class="s-barres">
-          <li><span class="s-b-nom">Refus hors fiche</span><span class="s-b-piste" aria-hidden="true"><i style="width:98%"></i></span><span class="s-b-val">0,98</span></li>
-          <li><span class="s-b-nom">Citation</span><span class="s-b-piste" aria-hidden="true"><i style="width:74%"></i></span><span class="s-b-val">0,74</span></li>
-          <li><span class="s-b-nom">Précautions</span><span class="s-b-piste" aria-hidden="true"><i style="width:72%"></i></span><span class="s-b-val">0,72</span></li>
-          <li><span class="s-b-nom">Complétude</span><span class="s-b-piste s-faible" aria-hidden="true"><i style="width:17%"></i></span><span class="s-b-val s-faible-v">0,17</span></li>
-          <li><span class="s-b-nom">Chiffres</span><span class="s-b-piste s-faible" aria-hidden="true"><i style="width:5%"></i></span><span class="s-b-val s-faible-v">0,05</span></li>
-          <li><span class="s-b-nom">Style</span><span class="s-b-piste s-faible" aria-hidden="true"><i style="width:0"></i></span><span class="s-b-val s-faible-v">0,00</span></li>
+          <li><span class="s-b-nom">Refus hors fiche</span><span class="s-b-piste" aria-hidden="true"><i style="width:96%"></i></span><span class="s-b-val">96 %</span></li>
+          <li><span class="s-b-nom">Citation des fiches</span><span class="s-b-piste" aria-hidden="true"><i style="width:94%"></i></span><span class="s-b-val">94 %</span></li>
+          <li><span class="s-b-nom">Français</span><span class="s-b-piste" aria-hidden="true"><i style="width:88%"></i></span><span class="s-b-val">88 %</span></li>
+          <li><span class="s-b-nom">Chiffres</span><span class="s-b-piste" aria-hidden="true"><i style="width:85%"></i></span><span class="s-b-val">85 %</span></li>
+          <li><span class="s-b-nom">Complétude</span><span class="s-b-piste" aria-hidden="true"><i style="width:78%"></i></span><span class="s-b-val">78 %</span></li>
+          <li><span class="s-b-nom">Précautions</span><span class="s-b-piste" aria-hidden="true"><i style="width:73%"></i></span><span class="s-b-val">73 %</span></li>
         </ul>
-        <p class="s-sous">En bleu, la machine juge comme moi. En orange, elle ne suffit pas : il faut un œil humain.</p>
+        <p class="s-alerte">Erreurs graves : elle n'en repère que <strong>3 sur mes 13</strong>.</p>
+        <p class="s-sous">Elle est d'accord avec moi quand la réponse est correcte, mais elle laisse passer la plupart des erreurs graves.</p>
       </figure>
-      <div class="s-carte s-duel">
-        <div><span class="s-nombre s-orange">13</span><span class="s-legende">erreurs graves relevées par ma relecture</span></div>
-        <div><span class="s-nombre">3</span><span class="s-legende">seulement par la notation automatique</span></div>
+      <div class="s-carte">
+        <p class="s-carte-t"><strong>Erreurs graves, selon qui relit</strong></p>
+        <table class="s-table s-mini">
+          <caption class="pf-sr">Nombre d'erreurs graves selon la machine et selon ma relecture</caption>
+          <thead><tr><th scope="col"><span class="pf-sr">Modèle</span></th><th scope="col">La machine</th><th scope="col">Moi</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Mistral<br><small>61 réponses</small></th><td>2</td><td class="s-moins">8</td></tr>
+            <tr><th scope="row">Olala<br><small>66 réponses</small></th><td>4</td><td class="s-moins">5</td></tr>
+          </tbody>
+        </table>
+        <p class="s-sous">Mistral donne pourtant plus souvent une réponse parfaite : 79 % contre 62 % pour Olala.</p>
       </div>
     </div>
   </div>
