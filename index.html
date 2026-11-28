@@ -296,6 +296,20 @@ body{margin:0;background:var(--fond);color:var(--texte);font-family:var(--corps)
 .s-table.s-grand th,.s-table.s-grand td{padding:7px 12px}
 .s-table.s-grand thead th{font-size:14px}
 .s-reeval .s-table.s-grand th,.s-reeval .s-table.s-grand td{padding:5px 12px}
+.s-phases{list-style:none;padding:0;display:grid;grid-template-columns:minmax(0,1fr);gap:12px}
+.s-phases>li{padding:12px 14px;background:var(--surf);border:1px solid var(--filet);border-radius:12px}
+.s-phases>li.s-cle{border-color:var(--bleu)}
+.s-phases b{display:flex;align-items:baseline;gap:8px;margin-bottom:4px;font:500 16px/1.25 var(--titres);color:var(--texte)}
+.s-phases p{font-size:13.5px;line-height:1.4;color:var(--doux)}
+.s-ph{font:600 14px/1 var(--titres);color:var(--bleu)}
+.s-table.s-phases-t th,.s-table.s-phases-t td{padding:3px 10px;white-space:nowrap}
+.s-table.s-phases-t thead th{text-align:center;border-bottom:1px solid var(--filet)}
+.s-table.s-phases-t thead tr:first-child th{color:var(--texte)}
+.s-table.s-phases-t tbody td{text-align:center}
+.s-table.s-phases-t tbody td:nth-of-type(2n+1){border-left:1px solid var(--filet)}
+.s-table.s-phases-t td.s-moins{color:var(--orange);font-weight:600}
+.s-table.s-phases-t .s-final{color:var(--bleu);font-weight:600}
+.s-t-note{font-size:12.5px;color:var(--doux)}
 .s-legende-tableau{margin-top:10px!important;font-size:14.5px;line-height:1.45;color:var(--doux)}
 .s-trio,.s-duo,.s-quatre{display:grid;grid-template-columns:minmax(0,1fr);gap:18px 32px}
 .s-bloc.s-plein{grid-column:1/-1}
@@ -353,6 +367,7 @@ body{margin:0;background:var(--fond);color:var(--texte);font-family:var(--corps)
   .s-parcours{grid-template-columns:1.7fr 1fr 1fr 1fr;gap:28px}
   .s-parcours>li+li::before{content:"";position:absolute;left:-21px;top:30px;width:9px;height:9px;border-right:1.5px solid var(--contour);border-bottom:1.5px solid var(--contour);transform:rotate(-45deg)}
   .s-corps.s-reeval{grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:36px}
+  .s-phases{grid-template-columns:repeat(4,minmax(0,1fr))}
   #s-suite{gap:30px}
 }
 @media (max-width:1179px){
@@ -585,7 +600,7 @@ body{margin:0;background:var(--fond);color:var(--texte);font-family:var(--corps)
     <li><span class="s-gros">80 cas fictifs</span><p>Ce sont des situations de bilan inventées : vérifier un seuil avant la séance, repérer un signe d'alerte, rédiger un texte pour le patient, ébaucher un programme.</p></li>
     <li><span class="s-gros">3 fois</span><p>Nous avons posé trois fois la même question à chaque modèle, pour vérifier que ses réponses restent stables.</p></li>
     <li><span class="s-gros">6 critères</span><p>Chaque réponse est notée sur six critères, dont l'appui sur les fiches (<span lang="en">grounding</span>) et l'absence de chiffre inventé. Une réponse dangereuse est signalée comme erreur grave.</p></li>
-    <li class="s-cle"><span class="s-gros">Près de 1&#8239;930</span><p>réponses notées en tout : 486 lors de l'évaluation, puis 480 à chacune des trois réévaluations.</p></li>
+    <li class="s-cle"><span class="s-gros">Près de 1&#8239;930</span><p>réponses notées en tout : 486 à la première phase, puis 480 à chacune des trois phases suivantes.</p></li>
   </ol>
   <div class="s-duo">
     <div class="s-bloc"><h3>Les 13 fiches</h3>
@@ -637,34 +652,39 @@ body{margin:0;background:var(--fond);color:var(--texte);font-family:var(--corps)
 <!-- ===================== 4. La réévaluation ===================== -->
 <section class="s-panneau s-onglet" id="s-reevaluation" role="tabpanel" aria-labelledby="s-t-reevaluation" tabindex="0">
   <div class="s-tete"><h2>La réévaluation</h2><p class="s-4d"><a href="https://www.anthropic.com/ai-fluency/overview" target="_blank" rel="noopener">AI Fluency<span class="pf-sr"> (nouvel onglet)</span></a> · <span lang="en">Description</span> et <span lang="en">Delegation</span></p></div>
-  <div class="s-corps s-reeval">
-    <div>
-      <div class="s-defile" role="region" aria-label="Tableau des trois étapes" tabindex="0">
-        <table class="s-table s-grand">
-          <caption class="pf-sr">Résultats aux trois étapes, 240 réponses par modèle et par étape</caption>
-          <thead><tr><th scope="col">240 réponses par étape</th><th scope="col">Mistral<br><small>1 → 2 → 3</small></th><th scope="col">Olala<br><small>1 → 2 → 3</small></th></tr></thead>
-          <tbody>
-            <tr><th scope="row">Seuils inversés ou mal convertis</th><td class="s-val">6 → 0 → <span class="s-mieux">0</span></td><td class="s-val">4 → 4 → <span class="s-mieux">0</span></td></tr>
-            <tr><th scope="row">Chiffres absents des fiches</th><td class="s-val">6 → 4 → <span class="s-mieux">1</span></td><td class="s-val">8 → 1 → <span class="s-mieux">1</span></td></tr>
-            <tr><th scope="row">Exercices inventés</th><td class="s-val">7 → 1 → <span class="s-mieux">0</span></td><td class="s-val">8 → 0 → <span class="s-mieux">0</span></td></tr>
-            <tr><th scope="row">Bénéfices inventés</th><td class="s-val">7 → 1 → <span class="s-mieux">1</span></td><td class="s-val">7 → 3 → <span class="s-mieux">3</span></td></tr>
-            <tr><th scope="row">Consignes cachées suivies</th><td class="s-val">1 → 1 → <span class="s-mieux">0</span></td><td class="s-val">4 → 0 → <span class="s-mieux">0</span></td></tr>
-            <tr><th scope="row">Réponses coupées faute de place</th><td class="s-val">0 → 0 → 0</td><td class="s-val">2 % → <span class="s-moins">19 %</span> → <span class="s-mieux">1 %</span></td></tr>
-            <tr><th scope="row">Éléments attendus présents</th><td class="s-val">91 % → 96,5 % → <span class="s-mieux">96,4 %</span></td><td class="s-val">93 % → 92 % → <span class="s-mieux">92,5 %</span></td></tr>
-            <tr><th scope="row">Temps de réponse moyen</th><td class="s-val">5,2 → 2,9 → <span class="s-mieux">1,0 s</span></td><td class="s-val">3,6 → <span class="s-moins">7,3</span> → <span class="s-mieux">4,8 s</span></td></tr>
-          </tbody>
-        </table>
-      </div>
-      <p class="s-legende-tableau">1 : première évaluation · 2 : nouvelle consigne · 3 : code autour du modèle. En bleu, le résultat final ; en orange, ce qui s'est dégradé en route.</p>
-    </div>
-    <div class="s-blocs s-deux">
-      <div class="s-bloc"><h3>Étape 2 : la consigne</h3><p>Elle oblige le modèle à recopier la règle, à comparer dans la même unité, puis à conclure. Mistral la suit bien (<span lang="en">steerability</span>). Olala cesse d'inventer des exercices, mais garde ses erreurs de seuil et déborde : 19&nbsp;% de réponses coupées.</p></div>
-      <div class="s-bloc"><h3>Étape 3 : le code autour du modèle</h3><p>Les <span lang="en">guardrails</span> sont dans le code. Il compare chaque mesure au seuil de la fiche et affiche la décision. Il fait réécrire une réponse qui contient un chiffre ou un exercice absent des fiches. Il ajoute les précautions, mot pour mot. Le modèle ne fait plus que rédiger.</p></div>
-      <div class="s-bloc"><h3>Ce que le test a révélé</h3><p>Quand la consigne parlait d'une « décision calculée par le code », Mistral a recopié cette étiquette dans 67 réponses où le code n'avait rien calculé, et a parfois inventé une décision. Depuis, c'est le logiciel qui affiche la décision, et le défaut a disparu.</p></div>
-      <div class="s-bloc"><h3>Limites et décision</h3><p>Les contrôles automatiques ont été construits à partir de ma relecture. Ils ne repèrent pas les bénéfices reformulés dans les textes pour le patient : la relecture du professionnel reste nécessaire. Nous retenons Mistral Small 3.2, avec le code autour.</p></div>
-    </div>
+  <ol class="s-phases" aria-label="Les quatre phases de test">
+    <li><b><span class="s-ph">1</span>Consigne simple</b><p>Le modèle répond à partir des fiches et les cite. Aucun contrôle.</p></li>
+    <li><b><span class="s-ph">2</span>Consigne réécrite</b><p>Le modèle recopie la règle, compare dans la même unité, puis conclut. Il fait tout seul.</p></li>
+    <li><b><span class="s-ph">3</span>Code autour du modèle</b><p>Le code compare la mesure au seuil, fait réécrire ce qui est inventé, ajoute les précautions. Il transmet sa décision au modèle.</p></li>
+    <li class="s-cle"><b><span class="s-ph">3.1</span>Code corrigé</b><p>Le logiciel affiche lui-même la décision. Les imitations sont retirées, les bénéfices contrôlés.</p></li>
+  </ol>
+  <div class="s-defile" role="region" aria-label="Tableau des quatre phases" tabindex="0">
+    <table class="s-table s-grand s-phases-t">
+      <caption class="pf-sr">Résultats des deux modèles aux quatre phases, 240 réponses par modèle et par phase</caption>
+      <thead>
+        <tr><td rowspan="2"><span class="s-t-note">240 réponses par modèle et par phase</span></td><th scope="colgroup" colspan="2">1 · Consigne simple</th><th scope="colgroup" colspan="2">2 · Consigne réécrite</th><th scope="colgroup" colspan="2">3 · Code autour du modèle</th><th scope="colgroup" colspan="2" class="s-final">3.1 · Code corrigé</th></tr>
+        <tr><th scope="col">Mistral</th><th scope="col">Olala</th><th scope="col">Mistral</th><th scope="col">Olala</th><th scope="col">Mistral</th><th scope="col">Olala</th><th scope="col" class="s-final">Mistral</th><th scope="col" class="s-final">Olala</th></tr>
+      </thead>
+      <tbody>
+            <tr><th scope="row">Seuils inversés ou mal convertis</th><td>6</td><td>4</td><td>0</td><td>4</td><td>0</td><td>0</td><td class="s-final">0</td><td class="s-final">0</td></tr>
+            <tr><th scope="row">Chiffres absents des fiches</th><td>6</td><td>8</td><td>4</td><td>1</td><td>0</td><td>0</td><td class="s-final">1</td><td class="s-final">1</td></tr>
+            <tr><th scope="row">Exercices inventés</th><td>7</td><td>8</td><td>1</td><td>0</td><td>0</td><td>0</td><td class="s-final">0</td><td class="s-final">0</td></tr>
+            <tr><th scope="row">Bénéfices inventés</th><td>7</td><td>7</td><td>1</td><td>3</td><td>3</td><td>7</td><td class="s-final">1</td><td class="s-final">3</td></tr>
+            <tr><th scope="row">Consignes cachées suivies</th><td>1</td><td>4</td><td>1</td><td>0</td><td>0</td><td>0</td><td class="s-final">0</td><td class="s-final">0</td></tr>
+            <tr><th scope="row">Étiquette de décision imitée</th><td>–</td><td>–</td><td>–</td><td>–</td><td class="s-moins">67</td><td>1</td><td class="s-final">0</td><td class="s-final">0</td></tr>
+            <tr><th scope="row">Réponses coupées faute de place</th><td>0&nbsp;%</td><td>2&nbsp;%</td><td>0&nbsp;%</td><td class="s-moins">19&nbsp;%</td><td>0&nbsp;%</td><td>3&nbsp;%</td><td class="s-final">0&nbsp;%</td><td class="s-final">1&nbsp;%</td></tr>
+            <tr><th scope="row">Éléments attendus présents</th><td>91&nbsp;%</td><td>93&nbsp;%</td><td>96,5&nbsp;%</td><td>92&nbsp;%</td><td>94&nbsp;%</td><td>91&nbsp;%</td><td class="s-final">96,4&nbsp;%</td><td class="s-final">92,5&nbsp;%</td></tr>
+            <tr><th scope="row">Temps de réponse moyen</th><td>5,2&nbsp;s</td><td>3,6&nbsp;s</td><td>2,9&nbsp;s</td><td class="s-moins">7,3&nbsp;s</td><td>1,2&nbsp;s</td><td>5,8&nbsp;s</td><td class="s-final">1,0&nbsp;s</td><td class="s-final">4,8&nbsp;s</td></tr>
+      </tbody>
+    </table>
   </div>
-  <p class="s-montre"><strong>Ce que ça montre</strong> <span>Une consigne mieux écrite réduit les erreurs. Confier au code ce qui se calcule supprime celles qui restaient : <span class="s-fort">plus aucun seuil inversé pour les deux modèles</span>, et des réponses de Mistral en 1 seconde.</span></p>
+  <p class="s-legende-tableau">En bleu, la phase finale ; en orange, ce qui s'est dégradé en route ; « – » : l'étiquette n'existait pas encore. Mesures par contrôles automatiques, construits à partir de ma relecture : ils retrouvent les 13 erreurs graves des 127 réponses relues, avec 11&nbsp;% de fausses alertes.</p>
+  <div class="s-trio">
+    <div class="s-bloc"><h3><span lang="en">Steerability</span></h3><p>C'est la capacité d'un modèle à suivre une consigne. En phase 2, Mistral la suit bien. Olala cesse d'inventer des exercices, mais garde ses erreurs de seuil et déborde : 19&nbsp;% de réponses coupées.</p></div>
+    <div class="s-bloc"><h3>Ce que la phase 3 a révélé</h3><p>Mistral a recopié l'étiquette « décision calculée par le code » dans 67 réponses où le code n'avait rien calculé, et a parfois inventé une décision. La phase 3.1 corrige ce défaut : il disparaît.</p></div>
+    <div class="s-bloc"><h3>Limites et décision</h3><p>Les contrôles ne repèrent pas les bénéfices reformulés dans les textes pour le patient : la relecture du professionnel reste nécessaire. Nous retenons Mistral Small 3.2 avec le code corrigé.</p></div>
+  </div>
+  <p class="s-montre"><strong>Ce que ça montre</strong> <span>Une consigne mieux écrite réduit les erreurs ; le code supprime celles qui restaient : <span class="s-fort">plus aucun seuil inversé pour les deux modèles</span>.</span></p>
 </section>
 
 <!-- ===================== 5. Garde-fous et conformité ===================== -->
