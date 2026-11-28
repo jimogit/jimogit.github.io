@@ -314,6 +314,14 @@ body{margin:0;background:var(--fond);color:var(--texte);font-family:var(--corps)
 .s-volume-t{font:600 22px/1.2 var(--titres);color:var(--bleu)}
 .s-volume-d{font-size:14px;line-height:1.45;color:var(--doux)}
 @media (min-width:1180px){.s-volume{grid-template-columns:auto minmax(0,1fr);gap:24px;align-items:baseline}}
+.s-discussion{padding:14px 18px;background:var(--surf);border:1px solid var(--bleu);border-radius:14px;display:grid;gap:10px}
+.s-discussion-t{font:600 12px/1 var(--titres);letter-spacing:.14em;text-transform:uppercase;color:var(--bleu)}
+.s-discussion-t span{margin-left:10px;letter-spacing:0;text-transform:none;font-weight:400;color:var(--doux)}
+.s-disc-grille{display:grid;grid-template-columns:minmax(0,1fr);gap:12px 24px}
+.s-disc-grille h3{font:600 15px/1.3 var(--titres);color:var(--texte);margin-bottom:3px}
+.s-disc-grille p{font-size:14px;line-height:1.45;color:var(--doux)}
+.s-disc-note{font-size:12.5px;line-height:1.4;color:var(--doux)}
+@media (min-width:1180px){.s-disc-grille{grid-template-columns:repeat(4,minmax(0,1fr))}}
 .s-legende-tableau{margin-top:10px!important;font-size:14.5px;line-height:1.45;color:var(--doux)}
 .s-trio,.s-duo,.s-quatre{display:grid;grid-template-columns:minmax(0,1fr);gap:18px 32px}
 .s-bloc.s-plein{grid-column:1/-1}
@@ -686,7 +694,16 @@ body{margin:0;background:var(--fond);color:var(--texte);font-family:var(--corps)
       </tbody>
     </table>
   </div>
-  <p class="s-montre"><strong>Ce que ça montre</strong> <span>En phase 3.1, Mistral ne fait que <span class="s-fort">2 écarts sur 240 réponses</span> : 1 chiffre absent des fiches et 1 bénéfice inventé. Aucun seuil inversé, aucun exercice inventé, aucune consigne cachée suivie, en 1 seconde par réponse.</span></p>
+  <div class="s-discussion">
+    <p class="s-discussion-t">Interprétation et discussion <span>phase 3.1, Mistral face à Olala</span></p>
+    <div class="s-disc-grille">
+      <div><h3>Précision</h3><p>Mistral fait <span class="s-fort">2 écarts sur 240 réponses</span> : 1 chiffre absent des fiches, 1 bénéfice inventé. Olala en fait 6 (1 chiffre, 3 bénéfices, 2 réponses coupées). Aucun des deux n'inverse plus un seuil.</p></div>
+      <div><h3>Vitesse</h3><p>Mistral répond en <span class="s-fort">1,0 seconde</span>, Olala en 4,8 secondes : près de 5 fois plus vite.</p></div>
+      <div><h3>Effort de calcul</h3><p>Olala « réfléchit » avant de répondre : 1&nbsp;008 tokens produits par réponse, dont 686 de raisonnement interne, contre 65 pour Mistral. Mais il n'active qu'environ 1 milliard de paramètres, contre 24 : son calcul est estimé à environ 4&nbsp;400 milliards d'opérations par réponse, contre 43&nbsp;000 pour Mistral, soit environ 10 fois moins.</p></div>
+      <div><h3>Ce qu'on en retient</h3><p>Le modèle léger est plus sobre en calcul, mais plus lent et moins fiable. Pour des réponses qui engagent la sécurité du patient, nous retenons Mistral. Le modèle léger pourrait servir à des tâches simples.</p></div>
+    </div>
+    <p class="s-disc-note">Tokens mesurés en phase 2, sur les mêmes 240 cas. Calcul estimé par la règle courante : 2 opérations par paramètre actif et par token. OVHcloud ne publie pas l'énergie consommée par requête : c'est un ordre de grandeur, pas une mesure d'énergie ni de CO<sub>2</sub>.</p>
+  </div>
   <p class="s-legende-tableau">En bleu, la phase finale ; en orange, ce qui s'est dégradé en route ; « – » : l'étiquette n'existait pas encore. Mesures par contrôles automatiques, construits à partir de ma relecture : ils retrouvent les 13 erreurs graves des 127 réponses relues, avec 11&nbsp;% de fausses alertes.</p>
   <div class="s-trio">
     <div class="s-bloc"><h3><span lang="en">Steerability</span></h3><p>C'est la capacité d'un modèle à suivre une consigne. En phase 2, Mistral la suit bien. Olala cesse d'inventer des exercices, mais garde ses erreurs de seuil et déborde : 19&nbsp;% de réponses coupées.</p></div>
