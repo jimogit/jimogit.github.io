@@ -322,6 +322,11 @@ body{margin:0;background:var(--fond);color:var(--texte);font-family:var(--corps)
 .s-disc-grille p{font-size:14px;line-height:1.45;color:var(--doux)}
 .s-disc-note{font-size:12.5px;line-height:1.4;color:var(--doux)}
 @media (min-width:1180px){.s-disc-grille{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.s-echelle{padding:14px 18px;border:1px solid var(--filet);border-radius:14px;background:var(--surf)}
+.s-echelle h3{font:600 16px/1.3 var(--titres);color:var(--texte);margin-bottom:8px}
+.s-echelle ul{margin:0;padding-left:18px;display:grid;gap:4px 28px;font-size:14px;line-height:1.45;color:var(--doux)}
+.s-echelle p{margin-top:8px;font-size:13.5px;color:var(--doux)}
+@media (min-width:1180px){.s-echelle ul{grid-template-columns:repeat(2,minmax(0,1fr))}}
 .s-legende-tableau{margin-top:10px!important;font-size:14.5px;line-height:1.45;color:var(--doux)}
 .s-trio,.s-duo,.s-quatre{display:grid;grid-template-columns:minmax(0,1fr);gap:18px 32px}
 .s-bloc.s-plein{grid-column:1/-1}
@@ -744,6 +749,19 @@ body{margin:0;background:var(--fond);color:var(--texte);font-family:var(--corps)
   <div class="s-duo">
     <div class="s-bloc"><h3>Pourquoi une bibliothèque</h3><p>Les connaissances d'un modèle (<span lang="en">knowledge</span>) s'arrêtent à sa date d'entraînement, alors que les recommandations évoluent (<span lang="en">staleness</span>). Une bibliothèque datée, elle, pourra être mise à jour.</p></div>
     <div class="s-bloc"><h3>MCP</h3><p>Avec le <span lang="en">Model Context Protocol</span>, l'agent accédera aux données du bilan par des outils aux droits limités, dont chaque usage sera tracé.</p></div>
+  </div>
+  <div class="s-echelle">
+    <h3>Passage à l'échelle : les questions posées</h3>
+    <ul>
+      <li>Quel volume de requêtes à 1&nbsp;000 abonnés, aux heures de pointe, et que permet l'API ?</li>
+      <li>API ou hébergement dédié : à partir de quel volume, et pour quel modèle spécialisé ?</li>
+      <li>Quel modèle pour quelle tâche, selon sa difficulté et son coût en calcul (<span lang="en">model routing</span>) ?</li>
+      <li>Par où une donnée de santé peut-elle transiter, et sous quelle certification ?</li>
+      <li>Quel engagement de disponibilité pour un outil utilisé en consultation ?</li>
+      <li>Quelles obligations : HDS, RGPD, AI Act, règlement sur les dispositifs médicaux ?</li>
+      <li>Comment suivre l'empreinte de calcul dans le temps ?</li>
+    </ul>
+    <p>Chaque question a une réponse chiffrée et sourcée, que je présente en entretien.</p>
   </div>
   <p class="s-credit">Les repères « AI Fluency » de chaque onglet renvoient au cadre 4D (<span lang="en">Delegation, Description, Discernment, Diligence</span>) de Rick Dakan, Joseph Feller et Anthropic.</p>
 </section>
