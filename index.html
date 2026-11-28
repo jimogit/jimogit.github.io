@@ -310,6 +310,10 @@ body{margin:0;background:var(--fond);color:var(--texte);font-family:var(--corps)
 .s-table.s-phases-t td.s-moins{color:var(--orange);font-weight:600}
 .s-table.s-phases-t .s-final{color:var(--bleu);font-weight:600}
 .s-t-note{font-size:12.5px;color:var(--doux)}
+.s-volume{display:grid;gap:2px}
+.s-volume-t{font:600 22px/1.2 var(--titres);color:var(--bleu)}
+.s-volume-d{font-size:14px;line-height:1.45;color:var(--doux)}
+@media (min-width:1180px){.s-volume{grid-template-columns:auto minmax(0,1fr);gap:24px;align-items:baseline}}
 .s-legende-tableau{margin-top:10px!important;font-size:14.5px;line-height:1.45;color:var(--doux)}
 .s-trio,.s-duo,.s-quatre{display:grid;grid-template-columns:minmax(0,1fr);gap:18px 32px}
 .s-bloc.s-plein{grid-column:1/-1}
@@ -658,11 +662,15 @@ body{margin:0;background:var(--fond);color:var(--texte);font-family:var(--corps)
     <li><b><span class="s-ph">3</span>Code autour du modèle</b><p>Le code compare la mesure au seuil, fait réécrire ce qui est inventé, ajoute les précautions. Il transmet sa décision au modèle.</p></li>
     <li class="s-cle"><b><span class="s-ph">3.1</span>Code corrigé</b><p>Le logiciel affiche lui-même la décision. Les imitations sont retirées, les bénéfices contrôlés.</p></li>
   </ol>
+  <div class="s-volume">
+    <p class="s-volume-t">240 réponses par modèle et par phase</p>
+    <p class="s-volume-d">80 cas fictifs posés 3 fois chacun : 102 réponses en sécurité (seuils, signes d'alerte), 51 en paramétrage, 42 hors des fiches, 21 en robustesse (consignes cachées, unités piégées), 18 en rédaction (textes pour le patient, synthèses pour le médecin) et 6 en planification.</p>
+  </div>
   <div class="s-defile" role="region" aria-label="Tableau des quatre phases" tabindex="0">
     <table class="s-table s-grand s-phases-t">
       <caption class="pf-sr">Résultats des deux modèles aux quatre phases, 240 réponses par modèle et par phase</caption>
       <thead>
-        <tr><td rowspan="2"><span class="s-t-note">240 réponses par modèle et par phase</span></td><th scope="colgroup" colspan="2">1 · Consigne simple</th><th scope="colgroup" colspan="2">2 · Consigne réécrite</th><th scope="colgroup" colspan="2">3 · Code autour du modèle</th><th scope="colgroup" colspan="2" class="s-final">3.1 · Code corrigé</th></tr>
+        <tr><td rowspan="2"></td><th scope="colgroup" colspan="2">1 · Consigne simple</th><th scope="colgroup" colspan="2">2 · Consigne réécrite</th><th scope="colgroup" colspan="2">3 · Code autour du modèle</th><th scope="colgroup" colspan="2" class="s-final">3.1 · Code corrigé</th></tr>
         <tr><th scope="col">Mistral</th><th scope="col">Olala</th><th scope="col">Mistral</th><th scope="col">Olala</th><th scope="col">Mistral</th><th scope="col">Olala</th><th scope="col" class="s-final">Mistral</th><th scope="col" class="s-final">Olala</th></tr>
       </thead>
       <tbody>
@@ -678,13 +686,13 @@ body{margin:0;background:var(--fond);color:var(--texte);font-family:var(--corps)
       </tbody>
     </table>
   </div>
+  <p class="s-montre"><strong>Ce que ça montre</strong> <span>En phase 3.1, Mistral ne fait que <span class="s-fort">2 écarts sur 240 réponses</span> : 1 chiffre absent des fiches et 1 bénéfice inventé. Aucun seuil inversé, aucun exercice inventé, aucune consigne cachée suivie, en 1 seconde par réponse.</span></p>
   <p class="s-legende-tableau">En bleu, la phase finale ; en orange, ce qui s'est dégradé en route ; « – » : l'étiquette n'existait pas encore. Mesures par contrôles automatiques, construits à partir de ma relecture : ils retrouvent les 13 erreurs graves des 127 réponses relues, avec 11&nbsp;% de fausses alertes.</p>
   <div class="s-trio">
     <div class="s-bloc"><h3><span lang="en">Steerability</span></h3><p>C'est la capacité d'un modèle à suivre une consigne. En phase 2, Mistral la suit bien. Olala cesse d'inventer des exercices, mais garde ses erreurs de seuil et déborde : 19&nbsp;% de réponses coupées.</p></div>
     <div class="s-bloc"><h3>Ce que la phase 3 a révélé</h3><p>Mistral a recopié l'étiquette « décision calculée par le code » dans 67 réponses où le code n'avait rien calculé, et a parfois inventé une décision. La phase 3.1 corrige ce défaut : il disparaît.</p></div>
     <div class="s-bloc"><h3>Limites et décision</h3><p>Les contrôles ne repèrent pas les bénéfices reformulés dans les textes pour le patient : la relecture du professionnel reste nécessaire. Nous retenons Mistral Small 3.2 avec le code corrigé.</p></div>
   </div>
-  <p class="s-montre"><strong>Ce que ça montre</strong> <span>Une consigne mieux écrite réduit les erreurs ; le code supprime celles qui restaient : <span class="s-fort">plus aucun seuil inversé pour les deux modèles</span>.</span></p>
 </section>
 
 <!-- ===================== 5. Garde-fous et conformité ===================== -->
