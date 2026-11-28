@@ -5,7 +5,7 @@
 <script>(function(d){d.className+=' js';try{var t=localStorage.getItem('jma-theme');if(t==='light'||t==='dark')d.setAttribute('data-theme',t)}catch(e){}})(document.documentElement)</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Choisir, tester et spécialiser une IA pour les paramédicaux – Jean-Marc Aoun</title>
-<meta name="description" content="Un agent IA qui accompagnera les paramédicaux pendant leurs bilans : deux modèles européens comparés, près de 1 930 réponses notées, 127 relues par un expert métier. Par Jean-Marc Aoun, chef de projet et product manager Health Tech chez Alphanumerix.">
+<meta name="description" content="Un agent IA qui accompagnera les paramédicaux pendant leurs bilans : deux modèles européens comparés, 1 926 réponses notées, 127 relues par un expert métier. Par Jean-Marc Aoun, chef de projet et product manager Health Tech chez Alphanumerix.">
 <meta name="author" content="Jean-Marc Aoun">
 <link rel="canonical" href="https://jimogit.github.io/">
 <meta name="color-scheme" content="dark light">
@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Jean-Marc Aoun">
 <meta property="og:url" content="https://jimogit.github.io/">
 <meta property="og:title" content="Choisir, tester et spécialiser une IA pour les paramédicaux – Jean-Marc Aoun">
-<meta property="og:description" content="Un agent IA nourri par les données du bilan paramédical. Deux modèles européens comparés, près de 1 930 réponses notées, 127 relues une à une par un enseignant APA.">
+<meta property="og:description" content="Un agent IA nourri par les données du bilan paramédical. Deux modèles européens comparés, 1 926 réponses notées, 127 relues une à une par un enseignant APA.">
 <meta property="og:image" content="https://jimogit.github.io/og-sante.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -247,8 +247,6 @@ body{margin:0;background:var(--fond);color:var(--texte);font-family:var(--corps)
 .s-onglet{max-width:1440px;margin:0 auto;padding:24px 20px 32px;display:flex;flex-direction:column;gap:22px}
 .s-tete{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:4px 20px;padding-bottom:4px}
 .s-tete h2{font:500 clamp(26px,2.4vw,32px)/1.15 var(--titres);letter-spacing:-.02em}
-.s-4d{font-size:13.5px;color:var(--doux)}
-.s-4d span{color:var(--bleu)}
 .s-chapeau{font-size:16.5px;line-height:1.5;color:var(--doux);max-width:1120px}
 .s-corps{display:grid;grid-template-columns:minmax(0,1fr);gap:28px}
 .s-blocs{display:grid;grid-template-columns:minmax(0,1fr);gap:18px 28px;align-content:start}
@@ -399,6 +397,24 @@ body{margin:0;background:var(--fond);color:var(--texte);font-family:var(--corps)
   .s-grain,.s-eclat{display:none}
   .s-pause{display:none!important}
 }
+
+/* Onglets aérés : choisir le modèle, l'évaluation, la réévaluation */
+@media (min-width:1180px){
+  #s-modele,#s-evaluation,#s-reevaluation{gap:34px;padding-top:26px;padding-bottom:56px}
+  #s-modele .s-table.s-grand th,#s-modele .s-table.s-grand td{padding:13px 16px}
+  #s-modele .s-trio,#s-evaluation .s-duo{gap:24px 56px}
+  #s-modele .s-bloc p,#s-evaluation .s-bloc p{line-height:1.55}
+  #s-evaluation .s-cartes{gap:20px}
+  #s-evaluation .s-cartes>li{padding:22px 22px}
+  #s-reevaluation .s-phases{gap:18px}
+  #s-reevaluation .s-phases>li{padding:16px 18px}
+  #s-reevaluation .s-volume{margin-top:6px}
+  .s-table.s-phases-t th,.s-table.s-phases-t td{padding:8px 12px}
+  #s-reevaluation .s-discussion{padding:22px 26px;gap:16px}
+  #s-reevaluation .s-disc-grille{gap:20px 36px}
+  #s-reevaluation .s-trio{gap:24px 48px}
+}
+
 </style>
 </head>
 <body>
@@ -540,7 +556,7 @@ body{margin:0;background:var(--fond);color:var(--texte);font-family:var(--corps)
           <h2 id="s-chiffres-t">Le projet en chiffres</h2>
           <ul>
             <li><span class="s-nombre">2</span><span class="s-legende">modèles d'IA européens comparés</span></li>
-            <li><span class="s-nombre"><small>près de </small>1&#8239;930</span><span class="s-legende">réponses de l'IA notées</span></li>
+            <li><span class="s-nombre">1&#8239;926</span><span class="s-legende">réponses de l'IA notées</span></li>
             <li><span class="s-nombre">127</span><span class="s-legende">réponses de l'IA relues une à une par moi, en tant qu'enseignant APA</span></li>
             <li><span class="s-nombre s-bleu">0</span><span class="s-legende">seuil inversé sur 240 réponses, une fois les règles de sécurité confiées au code</span></li>
           </ul>
@@ -586,7 +602,7 @@ body{margin:0;background:var(--fond);color:var(--texte);font-family:var(--corps)
 
 <!-- ===================== 1. Choisir le modèle ===================== -->
 <section class="s-panneau s-onglet" id="s-modele" role="tabpanel" aria-labelledby="s-t-modele" tabindex="0">
-  <div class="s-tete"><h2>Choisir le modèle</h2><p class="s-4d"><a href="https://www.anthropic.com/ai-fluency/overview" target="_blank" rel="noopener">AI Fluency<span class="pf-sr"> (nouvel onglet)</span></a> · <span lang="en">Delegation</span></p></div>
+  <div class="s-tete"><h2>Choisir le modèle</h2></div>
   <p class="s-intro-onglet">Le duel oppose un modèle de taille intermédiaire et un modèle très léger, tous deux européens, ouverts et servis par la même infrastructure.</p>
   <div class="s-defile" role="region" aria-label="Tableau des deux modèles" tabindex="0">
     <table class="s-table s-grand">
@@ -610,14 +626,14 @@ body{margin:0;background:var(--fond);color:var(--texte);font-family:var(--corps)
 
 <!-- ===================== 2. L'évaluation ===================== -->
 <section class="s-panneau s-onglet" id="s-evaluation" role="tabpanel" aria-labelledby="s-t-evaluation" tabindex="0">
-  <div class="s-tete"><h2>L'évaluation</h2><p class="s-4d"><a href="https://www.anthropic.com/ai-fluency/overview" target="_blank" rel="noopener">AI Fluency<span class="pf-sr"> (nouvel onglet)</span></a> · <span lang="en">Discernment</span></p></div>
+  <div class="s-tete"><h2>L'évaluation</h2></div>
   <p class="s-intro-onglet">Avant de choisir, nous avons soumis les deux modèles aux mêmes situations de bilan, puis noté chacune de leurs réponses.</p>
   <ol class="s-cartes" aria-label="Les étapes de l'évaluation">
     <li><span class="s-gros">13 fiches</span><p>Nous avons rédigé 13 fiches de recommandations, fondées sur des données scientifiques validées et couvrant plusieurs pathologies. Les modèles s'en servent pour répondre.</p></li>
     <li><span class="s-gros">80 cas fictifs</span><p>Ce sont des situations de bilan inventées : vérifier un seuil avant la séance, repérer un signe d'alerte, rédiger un texte pour le patient, ébaucher un programme.</p></li>
     <li><span class="s-gros">3 fois</span><p>Nous avons posé trois fois la même question à chaque modèle, pour vérifier que ses réponses restent stables.</p></li>
     <li><span class="s-gros">6 critères</span><p>Chaque réponse est notée sur six critères, dont l'appui sur les fiches (<span lang="en">grounding</span>) et l'absence de chiffre inventé. Une réponse dangereuse est signalée comme erreur grave.</p></li>
-    <li class="s-cle"><span class="s-gros">Près de 1&#8239;930</span><p>réponses notées en tout : 486 à la première phase, puis 480 à chacune des trois phases suivantes.</p></li>
+    <li class="s-cle"><span class="s-gros">1&#8239;926</span><p>réponses notées en tout : 486 à la première phase, puis 480 à chacune des trois phases suivantes.</p></li>
   </ol>
   <div class="s-duo">
     <div class="s-bloc"><h3>Les 13 fiches</h3>
@@ -628,7 +644,7 @@ body{margin:0;background:var(--fond);color:var(--texte);font-family:var(--corps)
 
 <!-- ===================== 3. La validation experte ===================== -->
 <section class="s-panneau s-onglet" id="s-validation" role="tabpanel" aria-labelledby="s-t-validation" tabindex="0">
-  <div class="s-tete"><h2>La validation experte</h2><p class="s-4d"><a href="https://www.anthropic.com/ai-fluency/overview" target="_blank" rel="noopener">AI Fluency<span class="pf-sr"> (nouvel onglet)</span></a> · <span lang="en">Discernment</span></p></div>
+  <div class="s-tete"><h2>La validation experte</h2></div>
   <div class="s-corps s-valid">
     <div class="s-blocs">
       <div class="s-bloc"><h3>Une relecture par le métier</h3><p>J'ai relu moi-même 127 des 486 réponses, tirées au hasard, en tant qu'enseignant APA. Je les ai notées avec la même grille que la machine.</p></div>
@@ -668,7 +684,7 @@ body{margin:0;background:var(--fond);color:var(--texte);font-family:var(--corps)
 
 <!-- ===================== 4. La réévaluation ===================== -->
 <section class="s-panneau s-onglet" id="s-reevaluation" role="tabpanel" aria-labelledby="s-t-reevaluation" tabindex="0">
-  <div class="s-tete"><h2>La réévaluation</h2><p class="s-4d"><a href="https://www.anthropic.com/ai-fluency/overview" target="_blank" rel="noopener">AI Fluency<span class="pf-sr"> (nouvel onglet)</span></a> · <span lang="en">Description</span> et <span lang="en">Delegation</span></p></div>
+  <div class="s-tete"><h2>La réévaluation</h2></div>
   <ol class="s-phases" aria-label="Les quatre phases de test">
     <li><b><span class="s-ph">1</span>Consigne simple</b><p>Le modèle répond à partir des fiches et les cite. Aucun contrôle.</p></li>
     <li><b><span class="s-ph">2</span>Consigne réécrite</b><p>Une consigne plus exigeante, écrite à partir des erreurs relevées. Le modèle fait encore tout seul.</p></li>
@@ -719,7 +735,7 @@ body{margin:0;background:var(--fond);color:var(--texte);font-family:var(--corps)
 
 <!-- ===================== 5. Garde-fous et conformité ===================== -->
 <section class="s-panneau s-onglet" id="s-garde-fous" role="tabpanel" aria-labelledby="s-t-garde-fous" tabindex="0">
-  <div class="s-tete"><h2>Garde-fous et conformité</h2><p class="s-4d"><a href="https://www.anthropic.com/ai-fluency/overview" target="_blank" rel="noopener">AI Fluency<span class="pf-sr"> (nouvel onglet)</span></a> · <span lang="en">Diligence</span></p></div>
+  <div class="s-tete"><h2>Garde-fous et conformité</h2></div>
   <ol class="s-parcours" aria-label="Le parcours d'un bilan avec l'agent IA">
     <li><span class="s-num" aria-hidden="true">1</span><b>Le professionnel réalise son bilan</b>
       <ul class="s-etiquettes"><li>contexte et histoire du patient</li><li>questionnaires</li><li>évaluation de la condition physique</li><li>examens et comptes rendus médicaux ou paramédicaux</li></ul></li>
@@ -738,7 +754,7 @@ body{margin:0;background:var(--fond);color:var(--texte);font-family:var(--corps)
 
 <!-- ===================== 6. La suite ===================== -->
 <section class="s-panneau s-onglet" id="s-suite" role="tabpanel" aria-labelledby="s-t-suite" tabindex="0">
-  <div class="s-tete"><h2>La suite <span class="s-avenir">à venir</span></h2><p class="s-4d"><a href="https://www.anthropic.com/ai-fluency/overview" target="_blank" rel="noopener">AI Fluency<span class="pf-sr"> (nouvel onglet)</span></a> · <span lang="en">Delegation</span> et <span lang="en">Diligence</span></p></div>
+  <div class="s-tete"><h2>La suite <span class="s-avenir">à venir</span></h2></div>
   <ol class="s-cartes s-suite-num" aria-label="Les étapes à venir">
     <li><b>Spécialisation</b><p>Un RAG donnera au modèle une bibliothèque scientifique datée et hiérarchisée, d'abord en APA. Un <span lang="en">fine-tuning</span> sur des réponses validées par des professionnels ancrera son ton et ses réflexes de sécurité.</p></li>
     <li><b>Les règles de sécurité restent dans le code</b><p>Plus la bibliothèque grandira, plus cette règle comptera : le modèle ne décide jamais d'un seuil. Les règles de sécurité sont validées par un expert et appliquées par le code.</p></li>
@@ -763,7 +779,6 @@ body{margin:0;background:var(--fond);color:var(--texte);font-family:var(--corps)
     </ul>
     <p>Chaque question a une réponse chiffrée et sourcée, que je présente en entretien.</p>
   </div>
-  <p class="s-credit">Les repères « AI Fluency » de chaque onglet renvoient au cadre 4D (<span lang="en">Delegation, Description, Discernment, Diligence</span>) de Rick Dakan, Joseph Feller et Anthropic.</p>
 </section>
 
   </main>
