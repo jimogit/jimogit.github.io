@@ -5,7 +5,7 @@
 <script>(function(d){d.className+=' js';try{var t=localStorage.getItem('jma-theme');if(t==='light'||t==='dark')d.setAttribute('data-theme',t)}catch(e){}})(document.documentElement)</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Choisir, tester et spécialiser une IA pour les paramédicaux – Jean-Marc Aoun</title>
-<meta name="description" content="Un agent IA qui accompagnera les paramédicaux pendant leurs bilans : deux modèles européens comparés, près de 970 réponses notées, 127 relues par un expert métier. Par Jean-Marc Aoun, chef de projet et product manager Health Tech chez Alphanumerix.">
+<meta name="description" content="Un agent IA qui accompagnera les paramédicaux pendant leurs bilans : deux modèles européens comparés, près de 1 930 réponses notées, 127 relues par un expert métier. Par Jean-Marc Aoun, chef de projet et product manager Health Tech chez Alphanumerix.">
 <meta name="author" content="Jean-Marc Aoun">
 <link rel="canonical" href="https://jimogit.github.io/">
 <meta name="color-scheme" content="dark light">
@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Jean-Marc Aoun">
 <meta property="og:url" content="https://jimogit.github.io/">
 <meta property="og:title" content="Choisir, tester et spécialiser une IA pour les paramédicaux – Jean-Marc Aoun">
-<meta property="og:description" content="Un agent IA nourri par les données du bilan paramédical. Deux modèles européens comparés, près de 970 réponses notées, 127 relues une à une par un enseignant APA.">
+<meta property="og:description" content="Un agent IA nourri par les données du bilan paramédical. Deux modèles européens comparés, près de 1 930 réponses notées, 127 relues une à une par un enseignant APA.">
 <meta property="og:image" content="https://jimogit.github.io/og-sante.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -508,9 +508,9 @@ body{margin:0;background:var(--fond);color:var(--texte);font-family:var(--corps)
           <h2 id="s-chiffres-t">Le projet en chiffres</h2>
           <ul>
             <li><span class="s-nombre">2</span><span class="s-legende">modèles d'IA européens comparés</span></li>
-            <li><span class="s-nombre"><small>près de </small>970</span><span class="s-legende">réponses de l'IA notées</span></li>
+            <li><span class="s-nombre"><small>près de </small>1&#8239;930</span><span class="s-legende">réponses de l'IA notées</span></li>
             <li><span class="s-nombre">127</span><span class="s-legende">réponses de l'IA relues une à une par moi, en tant qu'enseignant APA</span></li>
-            <li><span class="s-nombre s-bleu">÷ 6</span><span class="s-legende">alertes d'erreur grave de Mistral, après la réécriture de sa consigne</span></li>
+            <li><span class="s-nombre s-bleu">0</span><span class="s-legende">seuil inversé sur 240 réponses, une fois les règles de sécurité confiées au code</span></li>
           </ul>
           <p class="s-note">Ce dernier chiffre vient de contrôles automatiques. L'onglet <a href="#sante/reevaluation">La réévaluation</a> en explique les limites.</p>
         </section>
@@ -585,7 +585,7 @@ body{margin:0;background:var(--fond);color:var(--texte);font-family:var(--corps)
     <li><span class="s-gros">80 cas fictifs</span><p>Ce sont des situations de bilan inventées : vérifier un seuil avant la séance, repérer un signe d'alerte, rédiger un texte pour le patient, ébaucher un programme.</p></li>
     <li><span class="s-gros">3 fois</span><p>Nous avons posé trois fois la même question à chaque modèle, pour vérifier que ses réponses restent stables.</p></li>
     <li><span class="s-gros">6 critères</span><p>Chaque réponse est notée sur six critères, dont l'appui sur les fiches (<span lang="en">grounding</span>) et l'absence de chiffre inventé. Une réponse dangereuse est signalée comme erreur grave.</p></li>
-    <li class="s-cle"><span class="s-gros">Près de 970</span><p>réponses notées en tout : 486 lors de l'évaluation, 480 lors de la réévaluation.</p></li>
+    <li class="s-cle"><span class="s-gros">Près de 1&#8239;930</span><p>réponses notées en tout : 486 lors de l'évaluation, puis 480 à chacune des trois réévaluations.</p></li>
   </ol>
   <div class="s-duo">
     <div class="s-bloc"><h3>Les 13 fiches</h3>
@@ -636,35 +636,35 @@ body{margin:0;background:var(--fond);color:var(--texte);font-family:var(--corps)
 
 <!-- ===================== 4. La réévaluation ===================== -->
 <section class="s-panneau s-onglet" id="s-reevaluation" role="tabpanel" aria-labelledby="s-t-reevaluation" tabindex="0">
-  <div class="s-tete"><h2>La réévaluation</h2><p class="s-4d"><a href="https://www.anthropic.com/ai-fluency/overview" target="_blank" rel="noopener">AI Fluency<span class="pf-sr"> (nouvel onglet)</span></a> · <span lang="en">Description</span></p></div>
+  <div class="s-tete"><h2>La réévaluation</h2><p class="s-4d"><a href="https://www.anthropic.com/ai-fluency/overview" target="_blank" rel="noopener">AI Fluency<span class="pf-sr"> (nouvel onglet)</span></a> · <span lang="en">Description</span> et <span lang="en">Delegation</span></p></div>
   <div class="s-corps s-reeval">
     <div>
-      <div class="s-defile" role="region" aria-label="Tableau avant et après la nouvelle consigne" tabindex="0">
+      <div class="s-defile" role="region" aria-label="Tableau des trois étapes" tabindex="0">
         <table class="s-table s-grand">
-          <caption class="pf-sr">Première évaluation et réévaluation, 240 réponses par modèle</caption>
-          <thead><tr><th scope="col">240 réponses par modèle</th><th scope="col">Mistral, avant → après</th><th scope="col">Olala, avant → après</th></tr></thead>
+          <caption class="pf-sr">Résultats aux trois étapes, 240 réponses par modèle et par étape</caption>
+          <thead><tr><th scope="col">240 réponses par étape</th><th scope="col">Mistral<br><small>1 → 2 → 3</small></th><th scope="col">Olala<br><small>1 → 2 → 3</small></th></tr></thead>
           <tbody>
-            <tr><th scope="row">Alertes d'erreur grave</th><td class="s-val">7,9 % → <span class="s-mieux">1,2 %</span></td><td class="s-val">7,5 % → <span class="s-mieux">3,3 %</span></td></tr>
-            <tr><th scope="row">Seuils inversés ou mal convertis</th><td class="s-val">6 → <span class="s-mieux">0</span></td><td class="s-val">4 → 4</td></tr>
-            <tr><th scope="row">Exercices inventés</th><td class="s-val">7 → <span class="s-mieux">1</span></td><td class="s-val">8 → <span class="s-mieux">0</span></td></tr>
-            <tr><th scope="row">Bénéfices inventés</th><td class="s-val">7 → <span class="s-mieux">1</span></td><td class="s-val">7 → <span class="s-mieux">3</span></td></tr>
-            <tr><th scope="row">Éléments attendus présents</th><td class="s-val">91 % → <span class="s-mieux">96,5 %</span></td><td class="s-val">93 % → <span class="s-moins">92 %</span></td></tr>
-            <tr><th scope="row">Réponses coupées faute de place</th><td class="s-val">0 → 0</td><td class="s-val">2 % → <span class="s-moins">19 %</span></td></tr>
-            <tr><th scope="row">Longueur moyenne</th><td class="s-val">65 → <span class="s-mieux">35 mots</span></td><td class="s-val">86 → <span class="s-moins">152 mots</span></td></tr>
-            <tr><th scope="row">Temps de réponse moyen</th><td class="s-val">5,2 → <span class="s-mieux">2,9 s</span></td><td class="s-val">3,6 → <span class="s-moins">7,3 s</span></td></tr>
+            <tr><th scope="row">Seuils inversés ou mal convertis</th><td class="s-val">6 → 0 → <span class="s-mieux">0</span></td><td class="s-val">4 → 4 → <span class="s-mieux">0</span></td></tr>
+            <tr><th scope="row">Chiffres absents des fiches</th><td class="s-val">6 → 4 → <span class="s-mieux">1</span></td><td class="s-val">8 → 1 → <span class="s-mieux">1</span></td></tr>
+            <tr><th scope="row">Exercices inventés</th><td class="s-val">7 → 1 → <span class="s-mieux">0</span></td><td class="s-val">8 → 0 → <span class="s-mieux">0</span></td></tr>
+            <tr><th scope="row">Bénéfices inventés</th><td class="s-val">7 → 1 → <span class="s-mieux">1</span></td><td class="s-val">7 → 3 → <span class="s-mieux">3</span></td></tr>
+            <tr><th scope="row">Consignes cachées suivies</th><td class="s-val">1 → 1 → <span class="s-mieux">0</span></td><td class="s-val">4 → 0 → <span class="s-mieux">0</span></td></tr>
+            <tr><th scope="row">Réponses coupées faute de place</th><td class="s-val">0 → 0 → 0</td><td class="s-val">2 % → <span class="s-moins">19 %</span> → <span class="s-mieux">1 %</span></td></tr>
+            <tr><th scope="row">Éléments attendus présents</th><td class="s-val">91 % → 96,5 % → <span class="s-mieux">96,4 %</span></td><td class="s-val">93 % → 92 % → <span class="s-mieux">92,5 %</span></td></tr>
+            <tr><th scope="row">Temps de réponse moyen</th><td class="s-val">5,2 → 2,9 → <span class="s-mieux">1,0 s</span></td><td class="s-val">3,6 → <span class="s-moins">7,3</span> → <span class="s-mieux">4,8 s</span></td></tr>
           </tbody>
         </table>
       </div>
-      <p class="s-legende-tableau">En bleu, ce qui s'améliore ; en orange, ce qui se dégrade. Pour Mistral, les alertes passent de 6 sur 6 à 1 sur 6 en planification, de 7 sur 18 à 1 sur 18 en rédaction, et de 4 sur 102 à 0 en sécurité.</p>
+      <p class="s-legende-tableau">1 : première évaluation · 2 : nouvelle consigne · 3 : code autour du modèle. En bleu, le résultat final ; en orange, ce qui s'est dégradé en route.</p>
     </div>
     <div class="s-blocs s-deux">
-      <div class="s-bloc"><h3>Comment nous avons mesuré</h3><p>J'ai transformé les erreurs repérées pendant ma relecture en contrôles automatiques. Ils retrouvent les 13 erreurs graves, avec 11 % de fausses alertes.</p></div>
-      <div class="s-bloc"><h3>La nouvelle consigne</h3><p>Elle oblige le modèle à recopier la règle, à comparer dans la même unité, puis à conclure. S'il manque une information, il écrit « à définir par l'enseignant APA ».</p></div>
-      <div class="s-bloc"><h3><span lang="en">Steerability</span></h3><p>C'est la capacité d'un modèle à suivre une consigne. Mistral la suit très bien. Olala cesse d'inventer des exercices, mais garde ses erreurs de seuil et déborde : 19 % de ses réponses sont coupées.</p></div>
-      <div class="s-bloc"><h3>Limite et décision</h3><p>Les contrôles ont été réglés sur les réponses que j'avais relues, et ils vérifient les règles ajoutées à la consigne : une partie du progrès était donc attendue. Nous avons retenu Mistral Small 3.2.</p></div>
+      <div class="s-bloc"><h3>Étape 2 : la consigne</h3><p>Elle oblige le modèle à recopier la règle, à comparer dans la même unité, puis à conclure. Mistral la suit bien (<span lang="en">steerability</span>). Olala cesse d'inventer des exercices, mais garde ses erreurs de seuil et déborde : 19&nbsp;% de réponses coupées.</p></div>
+      <div class="s-bloc"><h3>Étape 3 : le code autour du modèle</h3><p>Les <span lang="en">guardrails</span> sont dans le code. Il compare chaque mesure au seuil de la fiche et affiche la décision. Il fait réécrire une réponse qui contient un chiffre ou un exercice absent des fiches. Il ajoute les précautions, mot pour mot. Le modèle ne fait plus que rédiger.</p></div>
+      <div class="s-bloc"><h3>Ce que le test a révélé</h3><p>Quand la consigne parlait d'une « décision calculée par le code », Mistral a recopié cette étiquette dans 67 réponses où le code n'avait rien calculé, et a parfois inventé une décision. Depuis, c'est le logiciel qui affiche la décision, et le défaut a disparu.</p></div>
+      <div class="s-bloc"><h3>Limites et décision</h3><p>Les contrôles automatiques ont été construits à partir de ma relecture. Ils ne repèrent pas les bénéfices reformulés dans les textes pour le patient : la relecture du professionnel reste nécessaire. Nous retenons Mistral Small 3.2, avec le code autour.</p></div>
     </div>
   </div>
-  <p class="s-montre"><strong>Ce que ça montre</strong> <span>Entre les deux évaluations, seule la consigne donnée aux modèles a changé. Avec elle, <span class="s-fort">les alertes d'erreur grave de Mistral sont divisées par 6</span> et les inversions de seuil disparaissent. Olala suit moins bien une consigne exigeante.</span></p>
+  <p class="s-montre"><strong>Ce que ça montre</strong> <span>Une consigne mieux écrite réduit les erreurs. Confier au code ce qui se calcule supprime celles qui restaient : <span class="s-fort">plus aucun seuil inversé pour les deux modèles</span>, et des réponses de Mistral en 1 seconde.</span></p>
 </section>
 
 <!-- ===================== 5. Garde-fous et conformité ===================== -->
@@ -690,11 +690,11 @@ body{margin:0;background:var(--fond);color:var(--texte);font-family:var(--corps)
 <section class="s-panneau s-onglet" id="s-suite" role="tabpanel" aria-labelledby="s-t-suite" tabindex="0">
   <div class="s-tete"><h2>La suite <span class="s-avenir">à venir</span></h2><p class="s-4d"><a href="https://www.anthropic.com/ai-fluency/overview" target="_blank" rel="noopener">AI Fluency<span class="pf-sr"> (nouvel onglet)</span></a> · <span lang="en">Delegation</span> et <span lang="en">Diligence</span></p></div>
   <ol class="s-cartes s-suite-num" aria-label="Les étapes à venir">
-    <li><b><span lang="en">Guardrails</span> dans le code</b><p>Le code comparera chaque mesure au seuil ; le modèle se contentera de rédiger. Un exercice ou un chiffre absent des sources sera bloqué.</p></li>
-    <li><b>Spécialisation</b><p>Un RAG donnera au modèle une bibliothèque scientifique datée, d'abord en APA. Un <span lang="en">fine-tuning</span> sur des réponses validées par des professionnels ancrera son ton et ses réflexes de sécurité.</p></li>
+    <li><b>Spécialisation</b><p>Un RAG donnera au modèle une bibliothèque datée, d'abord en APA : recommandations officielles, revues, ouvrages et mes consignes de terrain, classés par priorité. Chaque source sera décrite (population, niveau de preuve, date). Un <span lang="en">fine-tuning</span> sur des réponses validées par des professionnels ancrera son ton et ses réflexes de sécurité.</p></li>
+    <li><b>Les règles de sécurité restent dans le code</b><p>Les seuils et les contre-indications seront extraits des sources, validés par un expert, puis codés. Le modèle ne les lira pas dans les articles au moment de répondre.</p></li>
     <li><b>Orientation</b><p>L'agent puisera dans les cartographies du sport santé, du sport adapté et du handisport : équipements en accès libre, maisons sport santé, clubs, associations. Son orientation suivra sa programmation : si elle prévoit de l'endurance trois fois par semaine, il pourra proposer un club d'aviron santé.</p></li>
-    <li><b>Nouvelle évaluation</b><p>Le même protocole, avec une relecture experte d'un échantillon.</p></li>
-    <li><b>Le successeur</b><p>Nous comparerons Mistral Small 4 : Mistral annonce la version 3.2 comme dépréciée dans sa propre API depuis le 30 avril 2026.</p></li>
+    <li><b>Nouvelle évaluation</b><p>Le même protocole, avec de nouveaux cas : sources contradictoires, étude faite sur une autre population, recommandation périmée. Une relecture experte d'un échantillon, et un contrôle des bénéfices fondé sur le sens.</p></li>
+    <li><b>Le successeur</b><p>Nous comparerons Mistral Small 4 dès qu'OVHcloud le proposera : Mistral annonce la version 3.2 comme dépréciée dans sa propre API depuis le 30 avril 2026.</p></li>
   </ol>
   <div class="s-duo">
     <div class="s-bloc"><h3>Pourquoi une bibliothèque</h3><p>Les connaissances d'un modèle (<span lang="en">knowledge</span>) s'arrêtent à sa date d'entraînement, alors que les recommandations évoluent (<span lang="en">staleness</span>). Une bibliothèque datée, elle, pourra être mise à jour.</p></div>
