@@ -671,9 +671,9 @@ body{margin:0;background:var(--fond);color:var(--texte);font-family:var(--corps)
   <div class="s-tete"><h2>La réévaluation</h2><p class="s-4d"><a href="https://www.anthropic.com/ai-fluency/overview" target="_blank" rel="noopener">AI Fluency<span class="pf-sr"> (nouvel onglet)</span></a> · <span lang="en">Description</span> et <span lang="en">Delegation</span></p></div>
   <ol class="s-phases" aria-label="Les quatre phases de test">
     <li><b><span class="s-ph">1</span>Consigne simple</b><p>Le modèle répond à partir des fiches et les cite. Aucun contrôle.</p></li>
-    <li><b><span class="s-ph">2</span>Consigne réécrite</b><p>Le modèle recopie la règle, compare dans la même unité, puis conclut. Il fait tout seul.</p></li>
-    <li><b><span class="s-ph">3</span>Code autour du modèle</b><p>Le code compare la mesure au seuil, fait réécrire ce qui est inventé, ajoute les précautions. Il transmet sa décision au modèle.</p></li>
-    <li class="s-cle"><b><span class="s-ph">3.1</span>Code corrigé</b><p>Le logiciel affiche lui-même la décision. Les imitations sont retirées, les bénéfices contrôlés.</p></li>
+    <li><b><span class="s-ph">2</span>Consigne réécrite</b><p>Une consigne plus exigeante, écrite à partir des erreurs relevées. Le modèle fait encore tout seul.</p></li>
+    <li><b><span class="s-ph">3</span>Code autour du modèle</b><p>Les règles de sécurité passent dans le code. Le modèle ne fait plus que rédiger.</p></li>
+    <li class="s-cle"><b><span class="s-ph">3.1</span>Code corrigé</b><p>La version 3, corrigée du défaut qu'elle a révélé.</p></li>
   </ol>
   <div class="s-volume">
     <p class="s-volume-t">240 réponses par modèle et par phase</p>
@@ -723,16 +723,16 @@ body{margin:0;background:var(--fond);color:var(--texte);font-family:var(--corps)
   <ol class="s-parcours" aria-label="Le parcours d'un bilan avec l'agent IA">
     <li><span class="s-num" aria-hidden="true">1</span><b>Le professionnel réalise son bilan</b>
       <ul class="s-etiquettes"><li>contexte et histoire du patient</li><li>questionnaires</li><li>évaluation de la condition physique</li><li>examens et comptes rendus médicaux ou paramédicaux</li></ul></li>
-    <li><span class="s-num" aria-hidden="true">2</span><b>L'agent IA propose une programmation et une orientation</b><p>Il croise les données du bilan avec ses connaissances (<span lang="en">knowledge</span>) et, demain, avec une bibliothèque scientifique interrogée par RAG.</p></li>
+    <li><span class="s-num" aria-hidden="true">2</span><b>L'agent IA fait des propositions</b><p>Il s'appuie sur les données du bilan, sur ses connaissances (<span lang="en">knowledge</span>) et, demain, sur une bibliothèque scientifique interrogée par RAG.</p></li>
     <li class="s-cle"><span class="s-num" aria-hidden="true">3</span><b>Le professionnel relit, modifie et valide</b><p>Aucune proposition n'entre dans le compte rendu sans sa validation.</p></li>
-    <li><span class="s-num" aria-hidden="true">4</span><b>Le logiciel génère le compte rendu</b><p>Il l'envoie au patient et, si besoin, au médecin qui l'a adressé.</p></li>
+    <li><span class="s-num" aria-hidden="true">4</span><b>Le compte rendu est remis</b><p>Le jour même, au patient et, si besoin, à son médecin.</p></li>
   </ol>
   <p class="s-journal">Un journal des accès, non modifiable, garde la trace de tout le parcours.</p>
   <div class="s-quatre">
     <div class="s-bloc"><h3>Le produit</h3><p>Ce logiciel est pensé comme un SaaS de santé qui respecte les exigences d'un SaMD (<span lang="en">Software as a Medical Device</span>). Une trajectoire vers la classe IIa est prête, si l'agent propose un jour des programmes individualisés.</p></div>
     <div class="s-bloc"><h3>Les données</h3><p>Les données sont cloisonnées par structure, et seuls les professionnels de santé voient les données de santé. La conception se fait sur des données fictives ; l'hébergement est prévu en HDS et le RGPD est intégré dès le départ.</p></div>
     <div class="s-bloc"><h3>L'IA sous contrôle</h3><p>Le professionnel paramédical valide chaque proposition de l'agent IA, et l'aide de l'IA est mentionnée sur le compte rendu. Cela respecte l'AI Act : transparence et maîtrise de l'IA par les utilisateurs.</p></div>
-    <div class="s-bloc"><h3>Le niveau de personnalisation</h3><p>En fin de compte rendu, une note indique au patient sur combien d'informations propres à sa situation l'agent s'est appuyé pour proposer des axes de réadaptation, et si chaque partie a été relue.</p></div>
+    <div class="s-bloc"><h3>La transparence pour le patient</h3><p>Le compte rendu dit au patient comment il a été préparé, et qu'il a été relu par le professionnel.</p></div>
   </div>
 </section>
 
@@ -740,10 +740,10 @@ body{margin:0;background:var(--fond);color:var(--texte);font-family:var(--corps)
 <section class="s-panneau s-onglet" id="s-suite" role="tabpanel" aria-labelledby="s-t-suite" tabindex="0">
   <div class="s-tete"><h2>La suite <span class="s-avenir">à venir</span></h2><p class="s-4d"><a href="https://www.anthropic.com/ai-fluency/overview" target="_blank" rel="noopener">AI Fluency<span class="pf-sr"> (nouvel onglet)</span></a> · <span lang="en">Delegation</span> et <span lang="en">Diligence</span></p></div>
   <ol class="s-cartes s-suite-num" aria-label="Les étapes à venir">
-    <li><b>Spécialisation</b><p>Un RAG donnera au modèle une bibliothèque datée, d'abord en APA : recommandations officielles, revues, ouvrages et mes consignes de terrain, classés par priorité. Chaque source sera décrite (population, niveau de preuve, date). Un <span lang="en">fine-tuning</span> sur des réponses validées par des professionnels ancrera son ton et ses réflexes de sécurité.</p></li>
-    <li><b>Les règles de sécurité restent dans le code</b><p>Les seuils et les contre-indications seront extraits des sources, validés par un expert, puis codés. Le modèle ne les lira pas dans les articles au moment de répondre.</p></li>
-    <li><b>Orientation</b><p>L'agent puisera dans les cartographies du sport santé, du sport adapté et du handisport : équipements en accès libre, maisons sport santé, clubs, associations. Son orientation suivra sa programmation : si elle prévoit de l'endurance trois fois par semaine, il pourra proposer un club d'aviron santé.</p></li>
-    <li><b>Nouvelle évaluation</b><p>Le même protocole, avec de nouveaux cas : sources contradictoires, étude faite sur une autre population, recommandation périmée. Une relecture experte d'un échantillon, et un contrôle des bénéfices fondé sur le sens.</p></li>
+    <li><b>Spécialisation</b><p>Un RAG donnera au modèle une bibliothèque scientifique datée et hiérarchisée, d'abord en APA. Un <span lang="en">fine-tuning</span> sur des réponses validées par des professionnels ancrera son ton et ses réflexes de sécurité.</p></li>
+    <li><b>Les règles de sécurité restent dans le code</b><p>Plus la bibliothèque grandira, plus cette règle comptera : le modèle ne décide jamais d'un seuil. Les règles de sécurité sont validées par un expert et appliquées par le code.</p></li>
+    <li><b>Vision produit</b><p>Commencer par les enseignants APA, dont je connais le bilan de l'intérieur, puis s'ouvrir aux autres paramédicaux. Mesurer l'usage réel : temps gagné par bilan, part des propositions gardées sans modification, corrections par partie.</p></li>
+    <li><b>Nouvelle évaluation</b><p>Le même protocole, enrichi de cas plus difficiles, avec une relecture experte d'un échantillon.</p></li>
     <li><b>Le successeur</b><p>Nous comparerons Mistral Small 4 dès qu'OVHcloud le proposera : Mistral annonce la version 3.2 comme dépréciée dans sa propre API depuis le 30 avril 2026.</p></li>
   </ol>
   <div class="s-duo">
